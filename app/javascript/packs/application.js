@@ -3,3 +3,4 @@ require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
 require('../stylesheets/application.scss');
+require('jquery');
