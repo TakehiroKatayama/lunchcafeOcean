@@ -1,0 +1,86 @@
+.main-visual {
+  background-image: image-url('top.jpg');
+  height: calc(100vh - 76px);
+  position: relative;
+  background-position: center;
+
+  .top-inner-text {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: #f3f9f9;
+
+    .main-message {
+      font-size: 5rem;
+      font-family: 'WindSong', cursive;
+
+      @media screen and (max-width: 767px) {
+        font-size: 3rem;
+      }
+    }
+    .sub-message {
+      font-size: 2rem;
+      font-family: 'Shippori Mincho', sans-serif;
+
+      @media screen and (max-width: 767px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.explain-title {
+  position: relative;
+  padding: 0.25em 0;
+}
+
+.explain-title:after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(to right, #40f22b, transparent);
+  background: linear-gradient(to right, #40f22b, transparent);
+}
+
+//規約
+
+.wrap-terms {
+  border-radius: 15px;
+  margin: 20px 0;
+  background: #f9fcfb;
+  border: 5px solid #e4e0de;
+  font-size: 1rem;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.5rem;
+  }
+}
+
+//Shopページ
+
+.shop-visual {
+  background-image: image-url('shop.jpg');
+  height: calc(50vh);
+  position: relative;
+  background-position: center;
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    color: #f3f9f9;
+
+    .shop-message {
+      font-size: 5rem;
+      font-family: 'WindSong', cursive;
+    }
+  }
+}
