@@ -45,3 +45,17 @@
   background: -webkit-linear-gradient(to right, #40f22b, transparent);
   background: linear-gradient(to right, #40f22b, transparent);
 }
+
+//規約
+
+.wrap-terms {
+  border-radius: 15px;
+  margin: 20px 0;
+  background: #f9fcfb;
+  border: 5px solid #e4e0de;
+  font-size: 1rem;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.5rem;
+  }
+}
