@@ -1,0 +1,21 @@
+<%= form_with url: login_path, local: true do |f| %>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fas fa-envelope"></i>
+      </div>
+    </div>
+    <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fas fa-lock"></i>
+      </div>
+    </div>
+    <%= f.password_field :password, class: "form-control", placeholder: "パスワード", required: true %>
+  </div>
+  <div class="actions text-center mb-3">
+    <%= f.submit "ログイン", class: "btn btn-success w-100" %>
+  </div>
+<% end %>

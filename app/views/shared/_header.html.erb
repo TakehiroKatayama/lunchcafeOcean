@@ -11,11 +11,20 @@
     <% end %>
   </div>
   <div class="navbar-nav d-block d-lg-none">
-    <%= link_to root_path do %>
-      <div class="flex-column mx-3 text-center">
-        <i class="fas fa-sign-in-alt fa-2x"></i>
-        <p class="text-nowrap mb-0">ログイン</p>
-      </div>
+    <% if logged_in? %>
+      <%= link_to root_path do %>
+        <div class="flex-column mx-3 text-center">
+          <i class="fas fa-user fa-2x"></i>
+          <p class="text-nowrap mb-0">マイページ</p>
+        </div>
+      <% end %>
+    <%else%>
+      <%= link_to login_path do %>
+        <div class="flex-column mx-3 text-center">
+          <i class="fas fa-sign-in-alt fa-2x"></i>
+          <p class="text-nowrap mb-0">ログイン</p>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,11 +48,20 @@
     <% end %>
   </div>
   <div class="navbar-nav mr-auto d-none d-lg-block">
-    <%= link_to root_path do %>
-      <div class="flex-column mx-3 mb-0 text-center">
-        <i class="fas fa-sign-in-alt fa-2x"></i>
-        <p class="text-nowrap mb-0">ログイン</p>
-      </div>
+    <% if logged_in? %>
+      <%= link_to root_path do %>
+        <div class="flex-column mx-3 mb-0 text-center">
+          <i class="fas fa-user fa-2x"></i>
+          <p class="text-nowrap mb-0">マイページ</p>
+        </div>
+      <% end %>
+    <%else%>
+      <%= link_to login_path do %>
+        <div class="flex-column mx-3 mb-0 text-center">
+          <i class="fas fa-sign-in-alt fa-2x"></i>
+          <p class="text-nowrap mb-0">ログイン</p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </nav>
