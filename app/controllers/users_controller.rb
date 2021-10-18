@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: %i[show edit update]
+
   def new
     @user = User.new
   end
@@ -13,6 +15,19 @@ class UsersController < ApplicationController
   end
 
   def show; end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to '/mypage'
+    else
+      render :edit
+    end
+  end
 
   private
 

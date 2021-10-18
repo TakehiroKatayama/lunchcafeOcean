@@ -1,0 +1,19 @@
+<%= form_with model: @user, url: "/mypage/edit", local: true, id: "user_form" do |f| %>
+  <table class="table table-bordered bg-white">
+    <tr>
+      <th scope="row" class="table-active text-center align-middle"><%= f.label :name %></th>
+      <td><%= f.text_field :name, class: "form-control", placeholder: "(例)オーシャン太郎", required: true %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="table-active text-center align-middle"><%= f.label :email %></th>
+      <td><%= f.email_field :email, class: "form-control", placeholder: "(例)lunchcafe@ocean.com", required: true %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="table-active text-center align-middle"><%= f.label :phonenumber %></th>
+      <td><%= f.telephone_field :phonenumber, class: "form-control", placeholder: "(例)09012345678", required: true %></td>
+    </tr>
+  </table>
+  <div class="actions text-center my-4">
+    <%= f.submit "更新", class: "btn btn-success w-100" %>
+  </div>
+<% end %>

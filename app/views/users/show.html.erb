@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center my-5"><i class="fas fa-user"></i>マイページ</h1>
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h3 class="text-center mb-3">
+        登録情報
+        <%= link_to  "mypage/edit" do %>
+          <i class="fas fa-cog"></i>
+        <% end %>
+      </h3>
+      <div class="table-responsive">
+        <table class="table table-bordered bg-white shadow mb-5">
+          <tr>
+            <th scope="row" class="text-nowrap">お名前</th>
+            <td><%= current_user.name%></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-nowrap">メールアドレス</th>
+            <td><%= current_user.email%></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-nowrap">電話番号</th>
+            <td><%= current_user.phonenumber %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="text-center mb-4">
+        <%= link_to logout_path, class: "btn btn-secondary w-50 text-nowrap", method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>ログアウト
+        <% end %>
+      </div>
+      <div class="text-center mb-5">
+        <%= link_to "Homeへ", root_path %>
+      </div>
+    </div>
+  </div>
+</div>
