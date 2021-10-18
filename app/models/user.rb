@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英字・数字を混ぜて8文字以上36文字以内にしてください' }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+
+  enum role: { general: 0, admin: 1 }
 end
