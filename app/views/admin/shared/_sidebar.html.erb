@@ -1,0 +1,51 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <%= link_to "ランチカフェオーシャン", root_path, class: "brand-link font-weight-light brand-text" %>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-home"></i>
+            <p>Home</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-user"></i>
+            <p>ユーザー</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-calendar-check"></i>
+            <p>予約一覧</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>予約カレンダー</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-envelope"></i>
+            <p>お問い合わせ</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-utensils"></i>
+            <p>メニュー</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-newspaper"></i>
+            <p>ニュース</p>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

@@ -4,10 +4,16 @@
     <title>LunchcafeOcean</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <%= yield %>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%= render 'admin/shared/navbar' %>
+      <%= render 'admin/shared/sidebar' %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
