@@ -1,3 +1,7 @@
 class ApplicationController < ActionController::Base
-  def index; end
+  protected
+
+  def not_authenticated
+    redirect_to root_path
+  end
 end
