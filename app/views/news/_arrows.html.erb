@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-around">
+  <div>
+    <% if @news.next.present? %>
+      <%= link_to news_path(@news.next), class: "btn btn-outline-success btn-sm" do %>
+        <span class="newsnav-text"><i class="fas fa-arrow-left"></i> 最新のお知らせ</span>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to news_index_path, class: "btn btn-outline-success btn-sm" do %>
+    <span class="newsnav-text">お知らせ一覧へ</span>
+  <% end %>
+  <div>
+    <% if @news.previous.present? %>
+      <%= link_to news_path(@news.previous), class: "btn btn-outline-success btn-sm" do %>
+        <span class="newsnav-text">過去のお知らせ <i class="fas fa-arrow-right"></i></span>
+      <% end %>
+    <% end %>
+  </div>
+</div>
