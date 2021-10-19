@@ -11,12 +11,10 @@
     <header>
       <%= render 'shared/header'%>
     </header>
-    <script type="text/javascript">
-      toastr.success("hello")
-    </script>
     <%= yield %>
     <footer>
       <%= render 'shared/footer'%>
     </footer>
+    <%= render 'shared/flash_message' %>
   </body>
 </html>
