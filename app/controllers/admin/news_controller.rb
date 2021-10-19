@@ -26,6 +26,6 @@ class Admin::NewsController < Admin::BaseController
   def destroy; end
 
   def news_params
-    params.require(:news).permit(:title, :body, :category)
+    params.require(:news).permit(:title, :body, :category, :news_image, :news_image_cache)
   end
 end

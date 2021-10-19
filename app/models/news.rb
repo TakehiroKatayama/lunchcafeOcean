@@ -1,4 +1,6 @@
 class News < ApplicationRecord
+  mount_uploader :news_image, NewsImageUploader
+
   enum category: {
     info: 0,
     event: 1,
