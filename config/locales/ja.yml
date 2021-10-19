@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      news: ニュース
+    attributes:
+      news:
+        title: タイトル
+        body: 内容
+        category: カテゴリー
+        news_image: ニュース画像
+  time:
+    formats:
+      default: '%Y/%m/%d %H:%M:%S'
+      short: '%Y/%m/%d'
+      news: '%Y.%m.%d'
