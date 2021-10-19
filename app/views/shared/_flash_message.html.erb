@@ -1,0 +1,9 @@
+<% if flash.any? %>
+  <script type="text/javascript">
+    <% flash.each do |key, value| %>
+      <% key = "success" if key == "success" %>
+      <% key = "error" if key == "danger" %>
+      toastr['<%= key %>']('<%= value %>');
+    <% end %>
+  </script>
+<% end %>

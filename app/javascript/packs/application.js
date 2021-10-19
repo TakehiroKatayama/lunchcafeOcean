@@ -6,3 +6,5 @@ require('jquery');
 
 import 'bootstrap/dist/js/bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
+import toastr from 'toastr';
+window.toastr = toastr;
