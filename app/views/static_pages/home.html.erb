@@ -6,6 +6,10 @@
 </div>
 <center class="container mt-5">
   <h2 class="mb-5">最新のお知らせ</h2>
+  <div class="slider">
+    <%= render partial: "static_pages/news", collection: @news%>
+  </div>
+  <%= link_to "MORE", news_index_path, class: "btn btn-outline-success btn-lg rounded-pill w-50 mt-2" %>
 </center>
 <center class="container my-5">
   <h2>LunchcafeOceanについて</h2>
