@@ -35,4 +35,6 @@ class News < ApplicationRecord
   def next
     News.where('id > ?', id).order('id asc').first
   end
+
+  scope :latest, -> { order(created_at: 'desc').first(6) }
 end
