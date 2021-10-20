@@ -1,5 +1,5 @@
 class Admin::NewsController < Admin::BaseController
-  before_action :set_news, only: %i[show edit update]
+  before_action :set_news, only: %i[show edit update destroy]
 
   def index
     @news = News.order(created_at: 'desc').page(params[:page])
@@ -32,7 +32,10 @@ class Admin::NewsController < Admin::BaseController
     end
   end
 
-  def destroy; end
+  def destroy
+    @news.destroy!
+    redirect_to admin_news_index_path, success: 'ニュースを削除しました。'
+  end
 
   private
 
