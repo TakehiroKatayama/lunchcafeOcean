@@ -16,6 +16,7 @@
     <%= f.file_field :news_image, class: "form-control-file mb-3" %>
     <%= f.hidden_field :news_image_cache %>
   </div>
+  <i class="fas fa-exclamation-circle"></i>画像比率は1:1
   <div class="mt-3 mb-3">
     <%= image_tag @news.news_image.url, class: "img-fluid" if @news.news_image? %>
   </div>
