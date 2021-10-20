@@ -1,0 +1,29 @@
+<div class="container p-3 p-md-4 p-lg-5">
+  <div class="my-3">
+    <h2>ニュース</h2>
+  </div>
+  <div class="text-center mb-3">
+    <%= link_to "ニュース投稿", new_admin_news_path, class: "btn btn-primary" %>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-nowrap">投稿日</th>
+              <th scope="col" class="text-nowrap">タイトル</th>
+              <th scope="col" class="text-nowrap"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @news %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @news %>
+  </div>
+</div>

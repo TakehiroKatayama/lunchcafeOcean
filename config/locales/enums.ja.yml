@@ -1,0 +1,8 @@
+ja:
+  enums:
+    news:
+      category:
+        info: 'お知らせ'
+        event: 'イベント'
+        menu: 'メニュー'
+        campaign: 'キャンペーン'
