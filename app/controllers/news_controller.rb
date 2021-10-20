@@ -5,6 +5,6 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
-    @recent_news = News.order(created_at: 'desc').first(5)
+    @latest_news = News.latest
   end
 end

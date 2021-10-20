@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @news = News.order(created_at: 'desc').first(5)
+    @news = News.latest
   end
 end
