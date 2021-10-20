@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   def index
-    @news = News.order(created_at: 'desc').page(params[:page])
+    @news = News.category_list(params[:category]).order(created_at: 'desc').page(params[:page])
   end
 
   def show

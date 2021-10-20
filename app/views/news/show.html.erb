@@ -5,7 +5,7 @@
         <h2 class="m-5"><%= @news.title %></h2>
         <div class="d-flex justify-content-between align-items-center text-muted mx-5">
           <%= l @news.created_at, format: :news %>
-          <p class="btn btn-outline-success btn-sm rounded-pill text-nowrap ml-auto"><%= @news.category_i18n%></p>
+          <%= link_to @news.category_i18n, news_index_path(category: @news.category), class:"btn btn-outline-success btn-sm rounded-pill text-nowrap ml-auto" %>
         </div>
         <div class="mx-5 mb-5">
           <%= image_tag @news.news_image.url, class: "card-img-top img-fluid rounded mt-3" %>
@@ -18,10 +18,8 @@
     </div>
     <div class="col-lg-4 mx-3 mx-lg-0">
       <h5 class="mt-5 mb-3">最新のお知らせ</h5>
-      <div class="shadow mb-3">
-        <div class="px-0">
-          <%= render @recent_news %>
-        </div>
+      <div class="shadow-lg mb-3">
+        <%= render @recent_news %>
       </div>
     </div>
   </div>

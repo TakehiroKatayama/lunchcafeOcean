@@ -12,6 +12,22 @@ class News < ApplicationRecord
     campaign: 3
   }
 
+  ALL_CATEGORY = %w[info event menu campaign].freeze
+
+  def self.category_list(category)
+    if category == 'info'
+      where(category: 0)
+    elsif category == 'event'
+      where(category: 1)
+    elsif category == 'menu'
+      where(category: 2)
+    elsif category == 'campaign'
+      where(category: 3)
+    else
+      where(category: News::ALL_CATEGORY)
+    end
+  end
+
   def previous
     News.where('id < ?', id).order('id desc').first
   end
