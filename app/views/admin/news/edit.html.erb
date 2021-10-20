@@ -1,2 +1,10 @@
-<h1>Admin::News#edit</h1>
-<p>Find me in app/views/admin/news/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <div class="my-3">
+        <h2>ニュース編集</h2>
+      </div>
+      <%= render "form", {url: admin_news_path, news: @news } %>
+    </div>
+  </div>
+</div>

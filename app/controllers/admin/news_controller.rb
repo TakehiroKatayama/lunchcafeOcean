@@ -1,5 +1,5 @@
 class Admin::NewsController < Admin::BaseController
-  before_action :set_news, only: %i[show]
+  before_action :set_news, only: %i[show edit update]
 
   def index
     @news = News.order(created_at: 'desc').page(params[:page])
@@ -23,7 +23,14 @@ class Admin::NewsController < Admin::BaseController
 
   def edit; end
 
-  def update; end
+  def update
+    if @news.update(news_params)
+      redirect_to admin_news_index_path(@news), success: 'ニュースを更新しました。'
+    else
+      flash.now['danger'] = 'ニュースの更新に失敗しました'
+      render :edit
+    end
+  end
 
   def destroy; end
 
