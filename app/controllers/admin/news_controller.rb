@@ -1,4 +1,6 @@
 class Admin::NewsController < Admin::BaseController
+  before_action :set_news, only: %i[show]
+
   def index
     @news = News.order(created_at: 'desc').page(params[:page])
   end
@@ -24,6 +26,12 @@ class Admin::NewsController < Admin::BaseController
   def update; end
 
   def destroy; end
+
+  private
+
+  def set_news
+    @news = News.find(params[:id])
+  end
 
   def news_params
     params.require(:news).permit(:title, :body, :category, :news_image, :news_image_cache)
