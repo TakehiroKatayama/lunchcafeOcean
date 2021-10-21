@@ -123,3 +123,16 @@ button {
   height: 0;
   opacity: 0.5;
 }
+
+//fadein
+
+.fadein {
+  opacity: 0;
+  transform: translate(0, 50px);
+  transition: all 500ms;
+}
+
+.fadein.scrollin {
+  opacity: 1;
+  transform: translate(0, 0);
+}
