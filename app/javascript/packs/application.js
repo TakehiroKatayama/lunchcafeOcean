@@ -7,5 +7,6 @@ require('slick.js');
 
 import 'bootstrap/dist/js/bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
+import './fadein';
 import toastr from 'toastr';
 window.toastr = toastr;
