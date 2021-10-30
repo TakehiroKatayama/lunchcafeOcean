@@ -38,10 +38,10 @@ RSpec.describe User, type: :model do
       expect(second_user.errors[:email]).to include('はすでに存在します')
     end
 
-    it '指定formatに合わないemailを許容しないこと' do
+    it 'メールアドレスが指定formatに合わない場合、無効' do
       invalid_emails = %w[user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com foo@bar..com]
-      invalid_emails.each do |_invalid_email|
-        expect(user.errors[:email]).to be_invalid
+      invalid_emails.each do |invalid_email|
+        expect(build(:user, email: invalid_email)).to be_invalid
       end
     end
   end
