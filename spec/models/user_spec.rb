@@ -44,5 +44,37 @@ RSpec.describe User, type: :model do
         expect(build(:user, email: invalid_email)).to be_invalid
       end
     end
+
+    it '電話番号がない場合、無効' do
+      user = build(:user, phonenumber: nil)
+      user.valid?
+      expect(user.errors[:phonenumber]).to include('を入力してください')
+    end
+
+    it '電話番号が9文字以下、無効' do
+      user = build(:user, phonenumber: '0' * 9)
+      user.valid?
+      expect(user.errors[:phonenumber]).to include('は10文字以上で入力してください')
+    end
+
+    it '電話番号が12文字以上、無効' do
+      user = build(:user, phonenumber: '0' * 12)
+      user.valid?
+      expect(user.errors[:phonenumber]).to include('は11文字以内で入力してください')
+    end
+
+    it '電話番号が重複している場合、無効' do
+      first_user = create(:user, phonenumber: '00000000000')
+      second_user = build(:user, phonenumber: first_user.phonenumber)
+      second_user.valid?
+      expect(second_user.errors[:phonenumber]).to include('はすでに存在します')
+    end
+
+    it '電話番号が指定formatに合わない場合、無効' do
+      invalid_phonenumber = %w[００００００００００ 0000000000a]
+      invalid_phonenumber.each do |invalid_phonenumber|
+        expect(build(:user, phonenumber: invalid_phonenumber)).to be_invalid
+      end
+    end
   end
 end
