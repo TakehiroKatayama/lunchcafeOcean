@@ -76,5 +76,18 @@ RSpec.describe User, type: :model do
         expect(build(:user, phonenumber: invalid_phonenumber)).to be_invalid
       end
     end
+
+    it '電話番号が指定formatに合わない場合、無効' do
+      invalid_password = %w[Aaaa0000 0000000000 aaaaaaaa AAAAAAAA aaaa0000 AAAA0000 AAAAaaaa]
+      invalid_password.each do |invalid_password|
+        expect(build(:user, password: invalid_password)).to be_invalid
+      end
+    end
+
+    it 'パスワード確認がない場合、無効' do
+      user = build(:user, password_confirmation: nil)
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include('を入力してください')
+    end
   end
 end
