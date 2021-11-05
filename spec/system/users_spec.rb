@@ -45,4 +45,13 @@ RSpec.describe User, type: :system do
       end
     end
   end
+
+  describe 'マイページ' do
+    context 'ログインしていない状態' do
+      it 'マイページへのアクセスが失敗する' do
+        visit '/mypage'
+        expect(current_path).to eq root_path
+      end
+    end
+  end
 end
