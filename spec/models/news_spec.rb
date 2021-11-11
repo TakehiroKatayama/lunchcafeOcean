@@ -18,5 +18,17 @@ RSpec.describe News, type: :model do
       news.valid?
       expect(news.errors[:title]).to include('は20文字以内で入力してください')
     end
+
+    it '内容がない場合、無効' do
+      news = build(:news, body: nil)
+      news.valid?
+      expect(news.errors[:body]).to include('を入力してください')
+    end
+
+    fit '内容が5,001文字以上、無効' do
+      news = build(:news, body: 'a' * 5001)
+      news.valid?
+      expect(news.errors[:body]).to include('は5,000文字以内で入力してください')
+    end
   end
 end
