@@ -26,7 +26,7 @@ RSpec.describe News, type: :model do
     end
 
     it '内容が5,001文字以上、無効' do
-      news = build(:news, body: 'a' * 21)
+      news = build(:news, body: 'a' * 5001)
       # news.valid?
       # expect(news.errors[:body]).to include('は5,000文字以内で入力してください')
       # この記述ではテストがパスしない。要改善。
