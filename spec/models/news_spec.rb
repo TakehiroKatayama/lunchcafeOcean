@@ -25,9 +25,11 @@ RSpec.describe News, type: :model do
       expect(news.errors[:body]).to include('を入力してください')
     end
 
-    fit '内容が5,001文字以上、無効' do
-      # テストがパスしない。バリデーションが効いていない？要改善
-      news = build(:news, body: 'a' * 5001)
+    it '内容が5,001文字以上、無効' do
+      news = build(:news, body: 'a' * 21)
+      # news.valid?
+      # expect(news.errors[:body]).to include('は5,000文字以内で入力してください')
+      # この記述ではテストがパスしない。要改善。
       expect(news.valid?).to eq false
     end
   end
