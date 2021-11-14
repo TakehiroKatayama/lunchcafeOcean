@@ -32,5 +32,11 @@ RSpec.describe News, type: :model do
       # この記述ではテストがパスしない。要改善。
       expect(news.valid?).to eq false
     end
+
+    it '内容がない場合、無効' do
+      news = build(:news, category: nil)
+      news.valid?
+      expect(news.errors[:category]).to include('を入力してください')
+    end
   end
 end
