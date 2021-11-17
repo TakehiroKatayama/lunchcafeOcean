@@ -11,7 +11,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_users_path, success: 'アカウント情報を編集しました'
+      redirect_to admin_user_path(@user), success: 'アカウント情報を編集しました'
     else
       flash.now['danger'] = 'アカウント情報の変更に失敗しました'
       render :edit
