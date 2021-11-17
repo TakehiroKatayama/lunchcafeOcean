@@ -8,39 +8,39 @@
         <%= link_to edit_admin_user_path(@user), class: "btn btn-success" do %>
           <i class="far fa-edit"></i>編集
         <% end %>
-        <%#= link_to admin_user_path(@user), method: :delete, data: { confirm: "２度と戻せません本当に削除してもよろしいですか"}, class: "btn btn-danger" do %>
+        <%= link_to admin_user_path(@user), method: :delete, data: { confirm: "２度と戻せません本当に削除してもよろしいですか"}, class: "btn btn-danger" do %>
           <i class="far fa-trash-alt"></i>削除
-          <#% end %>
-          </div>
-          <table class="table table-bordered bg-white mb-5">
-            <tr>
-              <th scope="row">ID</th>
-              <td><%= @user.id %></td>
-            </tr>
-            <tr>
-              <th scope="row">名前</th>
-              <td><%= @user.name %></td>
-            </tr>
-            <tr>
-              <th scope="row">ユーザー権限</th>
-              <td><%= @user.role %></td>
-            </tr>
-            <tr>
-              <th scope="row">メールアドレス</th>
-              <td><%= @user.email %></td>
-            </tr>
-            <tr>
-              <th scope="row">電話番号</th>
-              <td><%= @user.phonenumber %></td>
-            </tr>
-            <tr>
-              <th scope="row">登録日時</th>
-              <td><%= l @user.created_at, format: :short %></td>
-            </tr>
-          </table>
-          <div class="my-3">
-            <h2>予約履歴</h2>
-          </div>
-        </div>
+        <% end %>
+      </div>
+      <table class="table table-bordered bg-white mb-5">
+        <tr>
+          <th scope="row">ID</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th scope="row">名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">ユーザー権限</th>
+          <td><%= @user.role %></td>
+        </tr>
+        <tr>
+          <th scope="row">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row">電話番号</th>
+          <td><%= @user.phonenumber %></td>
+        </tr>
+        <tr>
+          <th scope="row">登録日時</th>
+          <td><%= l @user.created_at, format: :short %></td>
+        </tr>
+      </table>
+      <div class="my-3">
+        <h2>予約履歴</h2>
       </div>
     </div>
+  </div>
+</div>
