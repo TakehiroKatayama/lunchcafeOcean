@@ -1,0 +1,13 @@
+<tr>
+  <td class="text-nowrap">
+    <%= user.name %>
+  </td>
+  <td class="text-nowrap text-right mr-1">
+    <%= link_to admin_user_path(user), class: "btn btn-info" do %>
+      <i class="fas fa-search-plus"></i>詳細
+    <% end%>
+    <%= link_to edit_admin_user_path(user), class: "btn btn-success" do %>
+      <i class="far fa-edit"></i>編集
+    <% end%>
+  </td>
+</tr>

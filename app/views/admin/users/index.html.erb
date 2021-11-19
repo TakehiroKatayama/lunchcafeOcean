@@ -1,0 +1,41 @@
+<div class="container p-3 p-md-4 p-lg-5">
+  <div class="my-3">
+    <h2>ユーザー</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <%= search_form_for @q, url: admin_users_path  do |f| %>
+        <div class="row">
+          <div class="form-inline align-items-center mx-auto">
+            <div class="col-auto">
+              <%= f.search_field :name_cont, class: "form-control", placeholder: "名前" %>
+            </div>
+            <div class="col-auto">
+              <%= f.submit "検索",  class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-nowrap">名前</th>
+              <th scope="col" class="text-nowrap"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @users %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @users %>
+  </div>
+</div>
