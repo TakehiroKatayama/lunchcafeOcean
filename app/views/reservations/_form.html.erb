@@ -1,0 +1,62 @@
+<%= form_with model: @reservation, url: reservations_path, local: true, id: "reservation_form" do |f| %>
+  <%= f.hidden_field :user_id, value: current_user&.id %>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :name %>
+    </div>
+    <div class="mb-3">
+      <%= f.text_field :name, value: current_user&.name, class: "form-control", placeholder: "(例)ほのぼの太郎", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :email %>
+    </div>
+    <div class="mb-3">
+      <%= f.email_field :email, value: current_user&.email, class: "form-control", placeholder: "(例)lunchcafe@honobono.com", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :phonenumber %>
+    </div>
+    <div class="mb-3">
+      <%= f.telephone_field :phonenumber, value: current_user&.phonenumber, class: "form-control", placeholder: "(例)09012345678", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :start_time %>
+    </div>
+    <div class="mb-3">
+      <%= f.date_field :capacity_id, class: "form-control", required: true, min: Date.tomorrow, max: Date.today.since(1.month) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :visiting_time %>
+    </div>
+    <div class="mb-3">
+      <%= f.select :visiting_time, Reservation.visiting_times_i18n.invert, {include_blank: "ご来店時間を選択して下さい"}, {class: "form-control", required: true} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="text-left mb-1">
+      <%= f.label :number_of_people %>
+    </div>
+    <div class="mb-3">
+      <%= f.select :number_of_people,[["1名", 1],["2名", 2],["3名", 3],["4名", 4],["5名", 5],["6名", 6],["7名", 7],["8名", 8],["9名", 9],["10名", 10]], {include_blank: "人数を選択して下さい"}, {class: "form-control", required: true} %>
+    </div>
+  </div>
+  <div class="text-left mb-3">
+    <small>・全ての入力項目が必須となっております。</small><br>
+    <small>・ご来店日は明日以降、一ヶ月以内、定休日(日・月曜日)以外を選択して下さい。</small><br>
+    <small>・電話番号はハイフンを除き市外局番から記入をお願いいたします。</small><br>
+    <small>・英数字は半角での記入をお願いいたします。</small><br>
+    <small>・ご入力頂いたメールアドレスに自動で確認メールを送信しております。</small><br>
+    <small>・大人数でのご予約をご希望の際は<%= link_to "お問い合わせページ", root_path %>、もしくはお電話にて店舗までご連絡下さい。</small><br>
+  </div>
+  <div class="actions text-center mb-3">
+    <%= f.submit "規約に同意して次へ", class: "btn btn-success w-100" %>
+  </div>
+<% end %>
