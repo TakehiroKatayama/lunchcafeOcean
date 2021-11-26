@@ -10,7 +10,7 @@ class Reservation < ApplicationRecord
   validates :phonenumber, presence: true, format: { with: VALID_PHONE_REGEX, message: 'は正しい電話番号を入力してください' }, length: { in: 10..11 }
   validates :number_of_people, presence: true
   validates :visiting_time, presence: true
-  validates :reservations_status, presence: true
+  validates :reservation_status, presence: true
   validates :capacity_id, presence: true
 
   validate :date_before_today
