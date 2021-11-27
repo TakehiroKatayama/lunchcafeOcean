@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'privacy', to: 'static_pages#privacy'
   get 'shop', to: 'static_pages#shop'
 
+  resources :reservations, only: %i[index create]
+
   resources :users, only: %i[new create]
   get '/mypage', to: 'users#show'
   get '/mypage/edit', to: 'users#edit'

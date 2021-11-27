@@ -2,12 +2,27 @@ ja:
   activerecord:
     models:
       news: ニュース
+      reservation: 予約
+      capacity: キャパシティー
     attributes:
       news:
         title: タイトル
         body: 内容
         category: カテゴリー
         news_image: ニュース画像
+      reservation:
+        name: お名前
+        email: メールアドレス
+        phonenumber: 電話番号
+        number_of_people: 人数
+        visiting_time: ご来店日
+        reservation_status: 予約ステータス
+        start_time: ご来店日
+        capacity_id: 日付ID
+        user_id: ユーザーID
+      capacity:
+        start_time: 予約日
+        remaining_seat: 席数
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

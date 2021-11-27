@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :reservations
+
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)\w{8,36}\z/.freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_PHONE_REGEX = /\A\d{10,11}\z/.freeze
