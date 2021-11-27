@@ -2,8 +2,8 @@ class Reservation < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :capacity
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_PHONE_REGEX = /\A\d{10,11}\z/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  VALID_PHONE_REGEX = /\A\d{10,11}\z/.freeze
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX, message: 'は正しいメールアドレスを入力してください' }, length: { maximum: 256 }
