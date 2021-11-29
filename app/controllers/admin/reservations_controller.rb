@@ -1,5 +1,7 @@
 class Admin::ReservationsController < Admin::BaseController
-  def index; end
+  def index
+    @reservations = Reservation.all.order(capacity_id: 'desc')
+  end
 
   def show; end
 
