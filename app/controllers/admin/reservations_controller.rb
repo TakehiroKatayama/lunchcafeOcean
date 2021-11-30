@@ -3,7 +3,9 @@ class Admin::ReservationsController < Admin::BaseController
     @reservations = Reservation.all.order(capacity_id: 'desc')
   end
 
-  def show; end
+  def show
+    @reservation = Reservation.find(params[:id])
+  end
 
   def new; end
 
