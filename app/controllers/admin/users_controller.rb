@@ -6,7 +6,9 @@ class Admin::UsersController < Admin::BaseController
     @users = @q.result.order(created_at: :desc).page(params[:page])
   end
 
-  def show; end
+  def show
+    @reservations = @user.reservations.order(created_at: :desc).page(params[:page]).per(5)
+  end
 
   def edit; end
 
