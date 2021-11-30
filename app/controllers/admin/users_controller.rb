@@ -7,7 +7,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def show
-    @reservations = @user.reservations.order(created_at: :desc).page(params[:page]).per(5)
+    @reservations = @user.reservations.order(created_at: :desc).page(params[:page]).per(User::PER_PAGE)
   end
 
   def edit; end
