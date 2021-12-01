@@ -28,4 +28,10 @@ class Admin::ReservationsController < Admin::BaseController
   def update; end
 
   def destroy; end
+
+  private
+
+  def reservation_params
+    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :capacity_id, :user_id)
+  end
 end
