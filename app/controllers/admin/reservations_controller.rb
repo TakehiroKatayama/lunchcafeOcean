@@ -1,5 +1,5 @@
 class Admin::ReservationsController < Admin::BaseController
-  before_action :set_reservation, only: %i[show edit update]
+  before_action :set_reservation, only: %i[show edit update destroy]
 
   def index
     @reservations = Reservation.all.order(capacity_id: 'desc')
@@ -38,7 +38,13 @@ class Admin::ReservationsController < Admin::BaseController
     render :edit
   end
 
-  def destroy; end
+  def destroy
+    Reservation.transaction do
+      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat + @reservation.number_of_people)
+      @reservation.destroy!
+      redirect_to admin_reservations_path, success: '予約をを削除しました'
+    end
+  end
 
   private
 
