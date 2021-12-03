@@ -15,7 +15,7 @@ class Admin::ReservationsController < Admin::BaseController
     Reservation.transaction do
       capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
-      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat - @reservation.number_of_people)
+      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       redirect_to admin_reservations_path, success: '予約が完了しました'
     end
   rescue StandardError
@@ -28,9 +28,9 @@ class Admin::ReservationsController < Admin::BaseController
   def update
     Reservation.transaction do
       @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
-      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat + @reservation.number_of_people)
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
-      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat - @reservation.number_of_people)
+      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       redirect_to admin_reservations_path, success: '予約の変更が完了しました'
     end
   rescue StandardError
@@ -40,7 +40,7 @@ class Admin::ReservationsController < Admin::BaseController
 
   def destroy
     Reservation.transaction do
-      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat + @reservation.number_of_people)
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.destroy!
       redirect_to admin_reservations_path, success: '予約をを削除しました'
     end
@@ -48,7 +48,7 @@ class Admin::ReservationsController < Admin::BaseController
 
   def cancel
     Reservation.transaction do
-      @reservation.capacity.update!(remaining_seat: @reservation.capacity.remaining_seat + @reservation.number_of_people)
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_status: 'cancel')
       redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
     end

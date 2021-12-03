@@ -44,4 +44,14 @@ class Reservation < ApplicationRecord
   def start_time_not_monday
     errors.add(:start_time, 'は定休日(月曜日・日曜日)以外を選択してください') if capacity.start_time.monday?
   end
+
+  # 席数から予約人数をマイナスする
+  def decreased_capacity
+    capacity.remaining_seat - number_of_people
+  end
+
+  # 席数に変更人数をプラスする
+  def increased_capacity
+    capacity.remaining_seat + number_of_people
+  end
 end
