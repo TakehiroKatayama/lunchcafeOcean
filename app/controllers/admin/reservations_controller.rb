@@ -1,5 +1,6 @@
 class Admin::ReservationsController < Admin::BaseController
   before_action :set_reservation, only: %i[show edit update destroy cancel]
+  before_action :assign_to_capacity_id, only: %i[create update]
 
   def index
     @reservations = Reservation.all.order(capacity_id: 'desc')
@@ -13,7 +14,6 @@ class Admin::ReservationsController < Admin::BaseController
 
   def create
     Reservation.transaction do
-      capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       redirect_to admin_reservations_path, success: '予約が完了しました'
@@ -27,7 +27,6 @@ class Admin::ReservationsController < Admin::BaseController
 
   def update
     Reservation.transaction do
-      @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
       @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
@@ -61,6 +60,10 @@ class Admin::ReservationsController < Admin::BaseController
 
   def set_reservation
     @reservation = Reservation.find(params[:id])
+  end
+
+  def assign_to_capacity_id
+    @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
   end
 
   def reservation_params
