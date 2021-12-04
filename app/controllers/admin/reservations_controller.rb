@@ -3,7 +3,8 @@ class Admin::ReservationsController < Admin::BaseController
   before_action :assign_to_capacity_id, only: %i[create update]
 
   def index
-    @reservations = Reservation.order(capacity_id: 'desc').page(params[:page])
+    @q = Reservation.ransack(params[:q])
+    @reservations = @q.result.order(capacity_id: 'desc').page(params[:page])
   end
 
   def show; end
