@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
     resources :news
     resources :users, only: %i[index show edit update destroy]
+    resources :reservations
+    patch '/reservations/cancel/:id', to: 'reservations#cancel'
   end
 end

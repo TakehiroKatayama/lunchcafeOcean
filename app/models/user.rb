@@ -15,4 +15,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   enum role: { general: 0, admin: 1 }
+
+  PER_PAGE = 5
 end

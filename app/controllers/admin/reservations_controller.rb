@@ -1,0 +1,73 @@
+class Admin::ReservationsController < Admin::BaseController
+  before_action :set_reservation, only: %i[show edit update destroy cancel]
+  before_action :assign_to_capacity_id, only: %i[create update]
+
+  def index
+    @q = Reservation.ransack(params[:q])
+    @reservations = @q.result.order(capacity_id: 'desc').page(params[:page])
+  end
+
+  def show; end
+
+  def new
+    @reservation = Reservation.new
+  end
+
+  def create
+    Reservation.transaction do
+      @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
+      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      redirect_to admin_reservations_path, success: '予約が完了しました'
+    end
+  rescue StandardError
+    flash.now['danger'] = "予約ができませんでした \n 今日以降の定休日以外の日付を入力してください \n 予約日の席数を確認してください"
+    render :new
+  end
+
+  def edit; end
+
+  def update
+    Reservation.transaction do
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
+      @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
+      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      redirect_to admin_reservations_path, success: '予約の変更が完了しました'
+    end
+  rescue StandardError
+    flash.now['danger'] = '予約の変更ができませんでした'
+    render :edit
+  end
+
+  def destroy
+    Reservation.transaction do
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
+      @reservation.destroy!
+      redirect_to admin_reservations_path, success: '予約をを削除しました'
+    end
+  end
+
+  def cancel
+    Reservation.transaction do
+      @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
+      @reservation.update!(reservation_status: 'cancel')
+      redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
+    end
+  rescue StandardError
+    flash.now['danger'] = 'キャンセルできませんでした'
+    render :show
+  end
+
+  private
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def assign_to_capacity_id
+    @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :capacity_id, :user_id)
+  end
+end
