@@ -13,6 +13,11 @@
               <%= capacity.remaining_seat%>席
             <% end%>
           </p>
+          <p class="text-nowrap">予約 :
+            <%= link_to admin_capacity_path(capacity) do%>
+              <%= capacity.reservations.count%>件
+            <% end%>
+          </p>
         <% end %>
       <% end %>
     </div>
