@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <div class="my-3">
+        <h2>席数変更</h2>
+      </div>
+      <%= render "form" %>
+      <div class="text-center">
+        <%= link_to admin_capacities_path, class: "btn btn-secondary" do %>
+          <i class="far fa-calendar-alt"></i>カレンダーへ
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
