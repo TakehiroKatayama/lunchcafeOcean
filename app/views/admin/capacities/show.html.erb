@@ -1,0 +1,38 @@
+<div class="container mb-5 pt-2">
+  <div class="my-3">
+    <h2><%= l @capacity.start_time, format: :short %>予約一覧</h2>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-nowrap">日にち</th>
+                  <th scope="col" class="text-nowrap">時間</th>
+                  <th scope="col" class="text-nowrap">名前</th>
+                  <th scope="col" class="text-nowrap">人数</th>
+                  <th scope="col" class="text-nowrap">ステータス</th>
+                  <th scope="col" class="text-nowrap"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render @reservations %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mb-3">
+        <%= link_to admin_reservations_path, class: "btn btn-secondary" do %>
+          <i class="far fa-calendar-check"></i>予約一覧へ
+        <% end %>
+        <%= link_to admin_capacities_path, class: "btn btn-secondary" do %>
+          <i class="far fa-calendar-alt"></i>カレンダーへ
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
