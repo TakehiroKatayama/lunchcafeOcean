@@ -1,4 +1,5 @@
 <%= form_with model: news, url: url, local: true do |f| %>
+  <%= render '/admin/shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label :category%>
     <%= f.select :category, News.categories_i18n.invert, {}, {class: "form-control", required: true} %>
