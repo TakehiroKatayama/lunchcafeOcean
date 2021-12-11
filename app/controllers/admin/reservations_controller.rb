@@ -15,7 +15,7 @@ class Admin::ReservationsController < Admin::BaseController
 
   def create
     Reservation.transaction do
-      @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
+      @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       redirect_to admin_reservations_path, success: '予約が完了しました'
     end
