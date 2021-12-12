@@ -17,11 +17,10 @@ class Admin::ReservationsController < Admin::BaseController
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
-      redirect_to admin_reservations_path, success: '予約が完了しました'
     end
-  rescue StandardError
-    flash.now['danger'] = "予約ができませんでした \n 今日以降の定休日以外の日付を入力してください \n 予約日の席数を確認してください"
-    render :new
+    redirect_to admin_reservations_path, success: '予約が完了しました'
+  rescue StandardError => e
+    redirect_to new_admin_reservation_path, danger: e.message
   end
 
   def edit; end
