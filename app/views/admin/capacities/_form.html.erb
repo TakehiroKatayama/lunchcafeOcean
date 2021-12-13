@@ -1,4 +1,5 @@
 <%= form_with model: @capacity, url: admin_capacity_path(@capacity), local: true do |f| %>
+  <%= render '/admin/shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label :remaining_seat %> *必須
     <%= f.number_field :remaining_seat, class: "form-control", required: true %>
