@@ -8,4 +8,16 @@ class Contact < ApplicationRecord
   validates :message, presence: true, length: { maximum: 2000 }
   validates :category, presence: true
   validates :status, presence: true
+
+  enum category: {
+    takeout: 0,
+    events: 1,
+    reserved: 2,
+    others: 3
+  }
+
+  enum status: {
+    outstanding: 0,
+    closed: 1
+  }
 end
