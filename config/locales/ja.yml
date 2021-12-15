@@ -23,6 +23,13 @@ ja:
       capacity:
         start_time: 予約日
         remaining_seat: 席数
+      contact:
+        name: お名前
+        email: メールアドレス
+        phonenumber: 電話番号
+        message: メッセージ
+        category: お問い合わせ種類
+        status: ステータス
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

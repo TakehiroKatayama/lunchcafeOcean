@@ -11,3 +11,12 @@ ja:
         visiting: '来店予約'
         visited: '来店済'
         cancel: 'キャンセル'
+    contact:
+      category:
+        takeout: 'ケーキのテイクアウト予約'
+        events: 'イベントについて'
+        reserved: '貸切について'
+        others: 'その他'
+      status:
+        outstanding: '未対応'
+        closed: '対応済'

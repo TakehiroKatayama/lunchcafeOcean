@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'shop', to: 'static_pages#shop'
 
   resources :reservations, only: %i[index create]
+  resources :contacts, only: %i[index create]
 
   resources :users, only: %i[new create]
   get '/mypage', to: 'users#show'
