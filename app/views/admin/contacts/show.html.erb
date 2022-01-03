@@ -37,6 +37,7 @@
       </table>
       <div class="text-center mb-3">
         <%= link_to "一覧へ", admin_contacts_path, class: "btn btn-secondary" %>
+        <%= link_to '削除', admin_contact_path(@contact), method: :delete, data: { confirm: '２度と戻せません本当に削除してもよろしいですか'}, class: 'btn btn-danger' %>
       </div>
     </div>
   </div>

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :news
     resources :users, only: %i[index show edit update destroy]
     resources :reservations
-    resources :contacts, only: %i[index show update]
+    resources :contacts, only: %i[index show update destroy]
     patch '/reservations/cancel/:id', to: 'reservations#cancel'
     resources :capacities, only: %i[index show edit update]
   end

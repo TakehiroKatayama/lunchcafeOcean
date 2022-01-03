@@ -17,6 +17,12 @@ class Admin::ContactsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy!
+    redirect_to admin_contacts_path, success: 'お問い合わせを削除しました'
+  end
+
   def contact_params
     params.require(:contact).permit(:status)
   end
