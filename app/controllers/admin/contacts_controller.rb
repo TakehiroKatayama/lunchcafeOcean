@@ -1,7 +1,7 @@
 class Admin::ContactsController < Admin::BaseController
   before_action :set_contact, only: %i[show update destroy]
   def index
-    @contacts = Contact.all.order(created_at: 'desc')
+    @contacts = Contact.order(created_at: 'desc').page(params[:page])
   end
 
   def show; end
