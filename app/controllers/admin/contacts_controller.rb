@@ -1,14 +1,12 @@
 class Admin::ContactsController < Admin::BaseController
+  before_action :set_contact, only: %i[show update destroy]
   def index
     @contacts = Contact.all.order(created_at: 'desc')
   end
 
-  def show
-    @contact = Contact.find(params[:id])
-  end
+  def show; end
 
   def update
-    @contact = Contact.find(params[:id])
     if @contact.update!(contact_params)
       redirect_to admin_contacts_path, success: 'ステータスを更新しました'
     else
@@ -18,9 +16,12 @@ class Admin::ContactsController < Admin::BaseController
   end
 
   def destroy
-    @contact = Contact.find(params[:id])
     @contact.destroy!
     redirect_to admin_contacts_path, success: 'お問い合わせを削除しました'
+  end
+
+  def set_contact
+    @contact = Contact.find(params[:id])
   end
 
   def contact_params
