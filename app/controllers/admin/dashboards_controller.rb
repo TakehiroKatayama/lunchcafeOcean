@@ -1,3 +1,5 @@
 class Admin::DashboardsController < Admin::BaseController
-  def index; end
+  def index
+    @reservations = Reservation.all.order(created_at: 'desc')
+  end
 end
