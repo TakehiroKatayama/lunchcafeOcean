@@ -40,5 +40,6 @@ ja:
   time:
     formats:
       default: '%Y/%m/%d %H:%M:%S'
+      long: '%Y/%m/%d(%a)'
       short: '%Y/%m/%d'
       news: '%Y.%m.%d'
