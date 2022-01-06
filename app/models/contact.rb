@@ -20,4 +20,6 @@ class Contact < ApplicationRecord
     outstanding: 0,
     closed: 1
   }
+
+  include Recent
 end

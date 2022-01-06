@@ -1,0 +1,16 @@
+<tr>
+  <td class="text-nowrap">
+    <%= l reservation.created_at, format: :long %>
+  </td>
+  <td class="text-nowrap">
+    <%= l reservation.capacity.start_time, format: :short %>
+  </td>
+  <td class="text-nowrap">
+    <%= reservation.reservation_status_i18n %>
+  </td>
+  <td class="text-nowrap">
+    <%= link_to admin_reservation_path(reservation), class: "btn btn-info" do %>
+      <i class="fas fa-search-plus"></i>詳細
+    <% end%>
+  </td>
+</tr>
