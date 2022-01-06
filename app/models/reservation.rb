@@ -54,4 +54,6 @@ class Reservation < ApplicationRecord
   def increased_capacity
     capacity.remaining_seat + number_of_people
   end
+
+  include Recent
 end
