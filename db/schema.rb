@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_144743) do
+ActiveRecord::Schema.define(version: 2022_01_07_124002) do
 
   create_table "capacities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.date "start_time", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2021_12_14_144743) do
     t.text "message", null: false
     t.integer "category", null: false
     t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "content"
+    t.integer "menu_category", null: false
+    t.string "menu_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
