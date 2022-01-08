@@ -20,6 +20,6 @@ class Admin::MenusController < Admin::BaseController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :content, :menu_category)
+    params.require(:menu).permit(:name, :content, :menu_category, :menu_image, :menu_image_cache)
   end
 end
