@@ -1,6 +1,6 @@
 class Admin::MenusController < Admin::BaseController
   def index
-    @menus = Menu.order(category: 'asc').all
+    @menus = Menu.order(menu_category: 'asc').all
   end
 
   def new
