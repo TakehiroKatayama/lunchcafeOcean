@@ -1,7 +1,7 @@
 class Menu < ApplicationRecord
   mount_uploader :menu_image, MenuImageUploader
 
-  enum category: {
+  enum menu_category: {
     lunch: 0,
     cake: 1,
     wholecake: 2,

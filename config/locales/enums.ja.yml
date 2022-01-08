@@ -6,6 +6,12 @@ ja:
         event: 'イベント'
         menu: 'メニュー'
         campaign: 'キャンペーン'
+    menu:
+      menu_category:
+        lunch: 'Lunch'
+        cake: 'Sweats'
+        wholecake: 'WholeCake'
+        oters: 'Others'
     reservation:
       reservation_status:
         visiting: '来店予約'
