@@ -3,6 +3,10 @@ class Admin::MenusController < Admin::BaseController
     @menus = Menu.order(menu_category: 'asc').all
   end
 
+  def show
+    @menu = Menu.find(params[:id])
+  end
+
   def new
     @menu = Menu.new
   end

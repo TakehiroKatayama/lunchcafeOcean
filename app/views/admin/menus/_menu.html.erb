@@ -6,5 +6,8 @@
     <%= menu.name %>
   </td>
   <td class="text-nowrap">
+    <%= link_to admin_menu_path(menu), class: "btn btn-info" do %>
+      <i class="fas fa-search-plus"></i>詳細
+    <% end%>
   </td>
 </tr>
