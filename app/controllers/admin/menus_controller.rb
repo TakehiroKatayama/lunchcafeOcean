@@ -11,6 +11,20 @@ class Admin::MenusController < Admin::BaseController
     @menu = Menu.new
   end
 
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    if @menu.update(menu_params)
+      redirect_to admin_menus_path(@menu), success: 'メニューを編集しました'
+    else
+      flash.now['danger'] = 'メニューの更新に失敗しました'
+      render :edit
+    end
+  end
+
   def create
     @menu = Menu.create(menu_params)
     if @menu.save
