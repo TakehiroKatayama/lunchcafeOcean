@@ -1,28 +1,14 @@
 class Admin::MenusController < Admin::BaseController
+  before_action :set_menu, only: %i[show edit update destroy]
+
   def index
     @menus = Menu.order(menu_category: 'asc').all
   end
 
-  def show
-    @menu = Menu.find(params[:id])
-  end
+  def show; end
 
   def new
     @menu = Menu.new
-  end
-
-  def edit
-    @menu = Menu.find(params[:id])
-  end
-
-  def update
-    @menu = Menu.find(params[:id])
-    if @menu.update(menu_params)
-      redirect_to admin_menus_path(@menu), success: 'メニューを編集しました'
-    else
-      flash.now['danger'] = 'メニューの更新に失敗しました'
-      render :edit
-    end
   end
 
   def create
@@ -35,13 +21,27 @@ class Admin::MenusController < Admin::BaseController
     end
   end
 
+  def edit; end
+
+  def update
+    if @menu.update(menu_params)
+      redirect_to admin_menus_path(@menu), success: 'メニューを編集しました'
+    else
+      flash.now['danger'] = 'メニューの更新に失敗しました'
+      render :edit
+    end
+  end
+
   def destroy
-    @menu = Menu.find(params[:id])
     @menu.destroy!
     redirect_to admin_menus_path, success: 'メニューを削除しました'
   end
 
   private
+
+  def set_menu
+    @menu = Menu.find(params[:id])
+  end
 
   def menu_params
     params.require(:menu).permit(:name, :content, :menu_category, :menu_image, :menu_image_cache)
