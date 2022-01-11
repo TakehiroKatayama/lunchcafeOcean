@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :news, only: %i[index show]
+  resources :menus, only: %i[index]
 
   namespace :admin do
     root 'dashboards#index'
