@@ -1,3 +1,26 @@
+.menu-visual {
+  background-image: image-url('menu_top.jpg');
+  height: calc(50vh);
+  position: relative;
+  background-position: center;
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    color: #f3f9f9;
+
+    .menu-message {
+      font-size: 5rem;
+      font-family: 'WindSong', cursive;
+    }
+  }
+}
+
 .menu-index {
   background-color: #e4e0de;
 
