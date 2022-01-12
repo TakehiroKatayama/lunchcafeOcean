@@ -10,6 +10,11 @@ ja:
         body: 内容
         category: カテゴリー
         news_image: ニュース画像
+      menu:
+        name: 品名
+        content: 説明
+        menu_category: メニューカテゴリー
+        menu_image: メニュー画像
       reservation:
         name: お名前
         email: メールアドレス

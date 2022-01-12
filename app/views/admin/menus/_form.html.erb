@@ -1,0 +1,28 @@
+<%= form_with model: menu, url: url, local: true do |f| %>
+  <%= render "/admin/shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :menu_category%>
+    <%= f.select :menu_category, Menu.menu_categories_i18n.invert, {}, {class: "form-control", required: true} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :menu_image%>
+    <%= f.file_field :menu_image, class: "form-control-file mb-3" %>
+    <%= f.hidden_field :menu_image_cache %>
+  </div>
+  <div class="mt-3 mb-3">
+    <%= image_tag @menu.menu_image.url, class: "img-fluid" if @menu.menu_image? %>
+    ※推奨 画像の比率は 縦:横 1:1 で統一した方が綺麗に見えます
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
+<div class="text-center mt-3 mb-3">
+  <%= link_to "一覧へ", admin_menus_path, class: "btn btn-secondary" %>
+</div>

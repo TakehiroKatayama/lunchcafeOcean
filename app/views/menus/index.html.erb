@@ -1,0 +1,70 @@
+<div class="menu-visual">
+  <div class="top-inner-text">
+    <h1 class="menu-message">Menu</h1>
+  </div>
+</div>
+<div class="container">
+  <h1 class="text-center my-5">メニュー</h1>
+  <div class="row shadow menu-index py-5">
+    <div class="col-12 col-md-6 mt-4">
+      <h4 class="text-center">Lunch</h4>
+      <ul>
+        <li>日替わりランチ</li>
+        <li><span class="menu-name">ドリンクセット</span><span class="menu-price">¥ 1,300</span></li>
+        <li><span class="menu-name">ケーキ + ドリンクセット</span><span class="menu-price">¥ 1,500</span></li>
+        <li>ピザ</li>
+        <li><span class="menu-name">単品</span><span class="menu-price">¥ 700</span></li>
+        <li><span class="menu-name">ドリンクセット</span><span class="menu-price">¥ 1,000</span></li>
+      </ul>
+    </div>
+    <div class="col-12 col-md-6 mt-4">
+      <h4 class="text-center">Sweats</h4>
+      <ul>
+        <li>ケーキ + ドリンクセット </span><span class="menu-price">¥ 600</span></li>
+      <li><span class="menu-price"><small>単品価格</small></span></li>
+      <li>ベイクドチーズケーキ<span class="menu-price">¥ 250</span></li>
+      <li>ガトーショコラ<span class="menu-price">¥ 250</span></li>
+      <li>レアチーズケーキ<span class="menu-price">¥ 300</span></li>
+      <li>ブリュレ<span class="menu-price">¥ 300</span></li>
+    </ul>
+  </div>
+  <div class="col-12 col-md-6 mt-4">
+    <h4 class="text-center">Drink</h4>
+    <ul>
+      <li>コーヒー(ホット/アイス)<span class="menu-price">¥ 400</span></li>
+      <li>紅茶(ホット/アイス)<span class="menu-price">¥ 400</span></li>
+      <li>オレンジジュース<span class="menu-price">¥ 400</span></li>
+      <li>アップルジュース<span class="menu-price">¥ 400</span></li>
+    </ul>
+  </div>
+  <div class="col-12 col-md-6 mt-4">
+    <h4 class="text-center">WholeCake</h4>
+    <ul>
+      <li>ベイクドチーズケーキ<span class="menu-price">¥ 1,500</span></li>
+      <li>ガトーショコラ<span class="menu-price">¥ 1,500</span></li>
+      <li>レアチーズケーキ<span class="menu-price">¥ 2,500</span></li>
+    </ul>
+  </div>
+  <div class="col-10 text-left ml-5">
+    <small>表示価格は全て税込表示です。</small><br>
+  </div>
+</div>
+<h2 class="text-center my-5">Lunch</h2>
+<div class="row">
+  <%= render partial: "menu", collection: @lunchs %>
+</div>
+<h2 class="text-center my-5">Sweats</h2>
+<div class="row">
+  <%= render partial: "menu", collection: @sweats %>
+</div>
+<h2 class="text-center my-5">WholeCake</h2>
+<div class="row">
+  <%= render partial: "menu", collection: @wholecakes %>
+</div>
+<% if @others.exists?%>
+  <h2 class="text-center my-5">Decoration sample</h2>
+  <div class="row">
+    <%= render partial: "menu", collection: @others %>
+  </div>
+<% end %>
+</div>

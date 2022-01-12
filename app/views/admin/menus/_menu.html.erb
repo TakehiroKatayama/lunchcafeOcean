@@ -1,0 +1,19 @@
+<tr>
+  <td class="text-nowrap">
+    <%= menu.menu_category_i18n %>
+  </td>
+  <td class="text-nowrap">
+    <%= menu.name %>
+  </td>
+  <td class="text-nowrap">
+    <%= link_to admin_menu_path(menu), class: "btn btn-info" do %>
+      <i class="fas fa-search-plus"></i>詳細
+    <% end%>
+    <%= link_to edit_admin_menu_path(menu), class: "btn btn-success" do %>
+      <i class="far fa-edit"></i>編集
+    <% end%>
+    <%= link_to admin_menu_path(menu), method: :delete, data: { confirm: "２度と戻せません本当に削除してもよろしいですか"}, class: "btn btn-danger" do %>
+      <i class="far fa-trash-alt"></i>削除
+    <% end%>
+  </td>
+</tr>
