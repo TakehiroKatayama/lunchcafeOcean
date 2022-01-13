@@ -5,6 +5,7 @@ require('channels');
 require('jquery');
 require('slick.js');
 
+import 'src/application';
 import 'bootstrap/dist/js/bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
 import './fadein';
