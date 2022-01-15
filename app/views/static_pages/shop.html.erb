@@ -41,4 +41,22 @@
   <div class="text-center my-5">
     <%= link_to "Googlemapで行き方を調べる", "https://goo.gl/maps/Px5Fo6YvZNZq4q968", target: :_blank, rel: "noopener noreferrer", class:"btn btn-outline-success" %>
   </div>
+  <div class="col-12 col-md-10 offset-md-1 mb-5" id="map"></div>
+  <script>
+    let map
+    
+    function initMap(){
+    
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 26.694347568450674, lng:127.87802919050505},
+        zoom: 12,
+      });
+    
+      marker = new google.maps.Marker({
+        position:  {lat: 26.694347568450674, lng:127.87802919050505},
+        map: map
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.gmap[:apikey]%>&callback=initMap" async defer></script>
 </div>
