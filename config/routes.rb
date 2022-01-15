@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     patch '/reservations/cancel/:id', to: 'reservations#cancel'
     resources :capacities, only: %i[index show edit update]
   end
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
