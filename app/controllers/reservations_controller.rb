@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
       capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      ReservationMailer.email(@reservation).deliver_now
       redirect_to root_path, success: 'ご予約が完了しました。'
     end
   rescue StandardError
