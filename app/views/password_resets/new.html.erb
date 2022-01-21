@@ -1,2 +1,20 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<div class="container reset-margin">
+  <h2 class="text-center my-5">パスワード再設定</h2>
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <%= form_with url: password_resets_path, local: true do |f| %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fas fa-envelope"></i>
+            </div>
+          </div>
+          <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+        </div>
+        <div class="actions text-center mb-5">
+          <%= f.submit "送信", class: "btn btn-success w-100" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
