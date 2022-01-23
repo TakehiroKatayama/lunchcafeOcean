@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :reservations, only: %i[index create]
   resources :contacts, only: %i[index create]
+  post 'contacts/confirm'
+  post 'contacts/back'
 
   resources :users, only: %i[new create]
   get '/mypage', to: 'users#show'
