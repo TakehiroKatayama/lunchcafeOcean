@@ -1,0 +1,10 @@
+<%= form_with model: @contact, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phonenumber %>
+  <%= f.hidden_field :category %>
+  <%= f.hidden_field :message %>
+  <div class="actions text-center mb-3">
+    <%= f.submit "送信する", class: "btn btn-success w-100" %>
+  </div>
+<% end %>
