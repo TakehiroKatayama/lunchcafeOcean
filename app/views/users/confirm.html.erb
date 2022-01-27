@@ -1,0 +1,31 @@
+<div class="container user-margin">
+  <h2 class="text-center my-5">会員登録内容確認</h2>
+  <div class="row">
+    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">お名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">電話番号</th>
+          <td><%= @user.phonenumber %></td>
+        </tr>
+      </table>
+      <%= form_with model: @user, local: true do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :phonenumber %>
+        <%= f.hidden_field :password %>
+        <%= f.hidden_field :password_confirmation %>
+        <div class="actions text-center my-2">
+          <%= f.submit "登録する", class: "btn btn-success w-100" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
