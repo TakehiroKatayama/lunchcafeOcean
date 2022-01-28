@@ -1,0 +1,10 @@
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phonenumber %>
+  <%= f.hidden_field :password %>
+  <%= f.hidden_field :password_confirmation %>
+  <div class="actions text-center my-2">
+    <%= f.submit "登録する", class: "btn btn-success w-100" %>
+  </div>
+<% end %>

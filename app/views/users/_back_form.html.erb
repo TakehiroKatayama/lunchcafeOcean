@@ -1,0 +1,8 @@
+<%= form_with model: @user, url: users_back_path, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phonenumber %>
+  <div class="actions text-center mb-5">
+    <%= f.submit "入力画面に戻る", class: "btn btn-secondary w-100" %>
+  </div>
+<% end %>
