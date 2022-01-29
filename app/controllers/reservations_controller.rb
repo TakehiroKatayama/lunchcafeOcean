@@ -12,6 +12,11 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def back
+    @reservation = Reservation.new(reservation_params)
+    render :index
+  end
+
   def create
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params)
