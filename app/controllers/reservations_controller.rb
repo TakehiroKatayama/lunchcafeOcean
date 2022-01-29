@@ -3,9 +3,17 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
   end
 
+  def confirm
+    capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
+    @reservation = Reservation.new(reservation_params.merge(capacity_id: capacity_id))
+    if @reservation.invalid?
+      flash.now[:danger] = 'ご来店日は日曜日、月曜日以外の日付を選択して下さい。'
+      render :index
+    end
+  end
+
   def create
     Reservation.transaction do
-      capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       ReservationMailer.email(@reservation).deliver_now
