@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'shop', to: 'static_pages#shop'
 
   resources :reservations, only: %i[index create]
+  post 'reservations/confirm'
+  post 'reservations/back'
+
   resources :contacts, only: %i[index create]
   post 'contacts/confirm'
   post 'contacts/back'
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :password_resets, only: %i[new create edit update]
+
   resources :news, only: %i[index show]
   resources :menus, only: %i[index]
 
