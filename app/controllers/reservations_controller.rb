@@ -6,10 +6,10 @@ class ReservationsController < ApplicationController
   def confirm
     capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
     @reservation = Reservation.new(reservation_params.merge(capacity_id: capacity_id))
-    if @reservation.invalid?
-      flash.now[:danger] = 'ご来店日は日曜日、月曜日以外の日付を選択して下さい。'
-      render :index
-    end
+    return unless @reservation.invalid?
+
+    flash.now[:danger] = 'ご来店日は日曜日、月曜日以外の日付を選択して下さい。'
+    render :index
   end
 
   def back
