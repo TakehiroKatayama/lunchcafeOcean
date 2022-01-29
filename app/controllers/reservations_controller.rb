@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
 
   def create
     Reservation.transaction do
-      @reservation = Reservation.create!(reservation_params.merge(capacity_id: capacity_id))
+      @reservation = Reservation.create!(reservation_params)
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
       ReservationMailer.email(@reservation).deliver_now
       redirect_to root_path, success: 'ご予約が完了しました。'
@@ -26,6 +26,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :user_id)
+    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :user_id, :capacity_id)
   end
 end
