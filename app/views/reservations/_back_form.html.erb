@@ -1,0 +1,11 @@
+<%= form_with model: @reservation, method: :post, url: reservations_back_path, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phonenumber %>
+  <%= f.hidden_field :capacity_id %>
+  <%= f.hidden_field :visiting_time %>
+  <%= f.hidden_field :number_of_people %>
+  <div class="actions text-center mb-3">
+    <%= f.submit "入力画面に戻る", class: "btn btn-secondary w-100" %>
+  </div>
+<% end %>
