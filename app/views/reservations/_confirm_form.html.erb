@@ -1,0 +1,11 @@
+<%= form_with model: @reservation, local: true, id: "reservation_form" do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :phonenumber %>
+  <%= f.hidden_field :capacity_id %>
+  <%= f.hidden_field :visiting_time %>
+  <%= f.hidden_field :number_of_people %>
+  <div class="actions text-center mb-3">
+    <%= f.submit "送信", class: "btn btn-success w-100" %>
+  </div>
+<% end %>

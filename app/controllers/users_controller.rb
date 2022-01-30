@@ -15,6 +15,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm
+    @user = User.new(user_params)
+    render :new if @user.invalid?
+  end
+
+  def back
+    @user = User.new(user_params)
+    render :new
+  end
+
   def show; end
 
   def edit

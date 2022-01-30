@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="text-center my-5">ご予約内容確認</h1>
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row"  class="table-active text-center align-middle">お名前</th>
+          <td><%= @reservation.name %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">メールアドレス</th>
+          <td><%= @reservation.email %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">電話番号</th>
+          <td><%= @reservation.phonenumber %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">ご来店日</th>
+          <td><%= l @reservation.capacity.start_time, format: :long %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">ご来店時間</th>
+          <td><%= @reservation.visiting_time_i18n %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="table-active text-center align-middle">人数</th>
+          <td><%= @reservation.number_of_people %></td>
+        </tr>
+      </table>
+      <%= render "confirm_form" %>
+      <%= render "back_form" %>
+      <div class="text-center mb-5">
+        <%= link_to "Homeへ", root_path %>
+      </div>
+    </div>
+  </div>
+</div>
