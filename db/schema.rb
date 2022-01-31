@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2022_01_18_122724) do
 
-  create_table "capacities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "capacities", force: :cascade do |t|
     t.date "start_time", null: false
     t.integer "remaining_seat", default: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "phonenumber", null: false
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_122724) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "menus", force: :cascade do |t|
     t.string "name", null: false
     t.string "content"
     t.integer "menu_category", null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_122724) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "news", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.integer "category", null: false
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_122724) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reservations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "reservations", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "phonenumber", null: false
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_122724) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "phonenumber", null: false
