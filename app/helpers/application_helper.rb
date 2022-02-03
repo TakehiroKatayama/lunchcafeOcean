@@ -1,4 +1,30 @@
 module ApplicationHelper
+  def default_meta_tags
+    {
+      site: 'ランチカフェオーシャン',
+      title: '海の見えるランチカフェ予約サイト',
+      reverse: true,
+      charset: 'utf-8',
+      description: 'description',
+      keywords: 'ランチ,カフェ,スイーツ,ケーキ,予約,海,絶景,海が見える,眺めの良い',
+      canonical: request.original_url,
+      separator: '|',
+      icon: [
+        { href: image_url('icon.jpg') },
+        { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
+      ],
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: 'website',
+        url: request.original_url,
+        image: image_url('icon.jpg'),
+        locale: 'ja_JP'
+      }
+    }
+  end
+
   def page_title
     if params[:category] == 'event'
       'イベント'
