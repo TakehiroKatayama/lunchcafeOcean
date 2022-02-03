@@ -25,13 +25,16 @@ module ApplicationHelper
     }
   end
 
-  def page_title
-    if params[:category] == 'event'
+  def news_category
+    case params[:category]
+    when 'event'
       'イベント'
-    elsif params[:category] == 'menu'
+    when 'menu'
       'メニュー'
-    elsif params[:category] == 'campaign'
+    when 'campaign'
       'キャンペーン'
+    else
+      'お知らせ'
     end
   end
 end
