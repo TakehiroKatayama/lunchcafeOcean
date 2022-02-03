@@ -34,6 +34,7 @@ gem 'enum_help'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'simple_calendar'
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
