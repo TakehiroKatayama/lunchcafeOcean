@@ -1,24 +1,33 @@
-# README
+# 実際に使っている飲食店予約管理サイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
+https://lunchcafeocean.herokuapp.com
 
-Things you may want to cover:
+## サービス概要
+実際の飲食店で使っている予約サイト　兼　予約管理システム　(のクローンアプリ)
 
-* Ruby version
+## 主な機能
 
-* System dependencies
+### 一般ユーザー
+- User 登録・ログイン機能
+- 予約機能
+- お問い合わせ機能
 
-* Configuration
+### 管理ユーザー
+- 予約管理機能
+  - 上限管理
+  - キャンセル 
+- お知らせ、メニュー投稿機能
 
-* Database creation
+## 使用技術
+### バックエンド
+- Ruby 2.7.3
+- Rails 6.0.3.7
+- Rubocop
+- RSpec
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### フロントエンド
+- HTML
+- CSS(SCSS)
+- JavaScript(jQuery)
+- bootstrap4
