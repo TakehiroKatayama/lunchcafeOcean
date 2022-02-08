@@ -15,13 +15,14 @@ class News < ApplicationRecord
   ALL_CATEGORY = %w[info event menu campaign].freeze
 
   def self.category_list(category)
-    if category == 'info'
+    case category
+    when 'info'
       where(category: 0)
-    elsif category == 'event'
+    when 'event'
       where(category: 1)
-    elsif category == 'menu'
+    when 'menu'
       where(category: 2)
-    elsif category == 'campaign'
+    when 'campaign'
       where(category: 3)
     else
       where(category: News::ALL_CATEGORY)
