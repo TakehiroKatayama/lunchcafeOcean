@@ -300,6 +300,7 @@ GEM
       rubyzip (>= 1.2.2)
     simple_calendar (2.4.3)
       rails (>= 3.0)
+    slack-notifier (2.4.0)
     sorcery (0.16.1)
       bcrypt (~> 3.1)
       oauth (~> 0.5, >= 0.5.5)
@@ -377,6 +378,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   simple_calendar
+  slack-notifier
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
