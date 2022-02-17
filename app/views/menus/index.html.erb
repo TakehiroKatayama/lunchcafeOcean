@@ -50,22 +50,30 @@
     <small>表示価格は全て税込表示です。</small><br>
   </div>
 </div>
-<h2 class="text-center my-5">Lunch</h2>
-<div class="row">
-  <%= render partial: "menu", collection: @lunchs %>
-</div>
-<h2 class="text-center my-5">Sweats</h2>
-<div class="row">
-  <%= render partial: "menu", collection: @sweats %>
-</div>
-<h2 class="text-center my-5">WholeCake</h2>
-<div class="row">
-  <%= render partial: "menu", collection: @wholecakes %>
-</div>
-<% if @others.exists?%>
-  <h2 class="text-center my-5">Decoration sample</h2>
+<div class="fadein">
+  <h2 class="text-center my-5">Lunch</h2>
   <div class="row">
-    <%= render partial: "menu", collection: @others %>
+    <%= render partial: "menu", collection: @lunchs %>
   </div>
-<% end %>
+</div>
+<div class="fadein">
+  <h2 class="text-center my-5">Sweats</h2>
+  <div class="row">
+    <%= render partial: "menu", collection: @sweats %>
+  </div>
+</div>
+<div class="fadein">
+  <h2 class="text-center my-5">WholeCake</h2>
+  <div class="row">
+    <%= render partial: "menu", collection: @wholecakes %>
+  </div>
+</div>
+<div class="fadein">
+  <% if @others.exists?%>
+    <h2 class="text-center my-5">Decoration sample</h2>
+    <div class="row">
+      <%= render partial: "menu", collection: @others %>
+    </div>
+  <% end %>
+</div>
 </div>
