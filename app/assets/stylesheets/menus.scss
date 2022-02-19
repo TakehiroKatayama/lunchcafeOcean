@@ -35,6 +35,20 @@
   }
 }
 
+.menu-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem 0;
+}
+.menu-title {
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.menu-explain {
+  font-size: 0.75rem;
+}
+
 .menu-name {
   margin-left: 20px;
 }
