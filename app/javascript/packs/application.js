@@ -13,6 +13,3 @@ import '@fortawesome/fontawesome-free/js/all';
 import './fadein';
 import toastr from 'toastr';
 window.toastr = toastr;
-
-require("trix")
-require("@rails/actiontext")
