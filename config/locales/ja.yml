@@ -9,7 +9,7 @@ ja:
         title: タイトル
         body: 内容
         category: カテゴリー
-        news_image: ニュース画像
+        news_image: サムネイル
       menu:
         name: 品名
         content: 説明

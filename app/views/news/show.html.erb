@@ -13,7 +13,7 @@
           <%= image_tag @news.news_image.url, class: "card-img-top img-fluid rounded mt-3" %>
         </div>
         <div class="body m-5">
-          <p><%= simple_format @news.body%></p>
+          <p><%= @news.body %></p>
         </div>
       </div>
       <%= render "arrows" %>
