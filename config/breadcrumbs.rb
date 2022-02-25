@@ -1,5 +1,10 @@
 crumb :root do
-  link "Home", root_path
+  link 'Home', root_path
+end
+
+crumb :news do
+  link 'お知らせ', news_index_path
+  parent :root
 end
 
 # crumb :projects do
