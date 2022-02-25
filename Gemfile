@@ -36,6 +36,7 @@ gem 'ransack'
 gem 'simple_calendar'
 gem 'meta-tags'
 gem 'slack-notifier'
+gem "gretel"
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false
 

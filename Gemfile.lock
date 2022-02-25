@@ -159,6 +159,9 @@ GEM
     formatador (0.3.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    gretel (4.4.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -401,6 +404,7 @@ DEPENDENCIES
   enum_help
   factory_bot_rails
   fog-aws
+  gretel
   jbuilder (~> 2.7)
   kaminari
   letter_opener_web
