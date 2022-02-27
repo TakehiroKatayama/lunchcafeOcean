@@ -7,6 +7,12 @@ crumb :news do
   parent :root
 end
 
+crumb :show_news do |news|
+  news = News.find(params[:id])
+  link news.title.to_s, news_path(news)
+  parent :news
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
