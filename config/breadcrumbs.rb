@@ -18,6 +18,11 @@ crumb :menu do
   parent :root
 end
 
+crumb :shop do
+  link '店舗情報', shop_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
