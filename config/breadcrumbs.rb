@@ -23,6 +23,11 @@ crumb :shop do
   parent :root
 end
 
+crumb :contact do
+  link '店舗情報', contacts_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
