@@ -13,6 +13,11 @@ crumb :show_news do |news|
   parent :news
 end
 
+crumb :menu do
+  link 'メニュー', menus_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
