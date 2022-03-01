@@ -24,7 +24,7 @@ crumb :shop do
 end
 
 crumb :contact do
-  link '店舗情報', contacts_path
+  link 'お問い合わせ', contacts_path
   parent :root
 end
 
