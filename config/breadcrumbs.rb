@@ -48,6 +48,16 @@ crumb :user do
   parent :root
 end
 
+crumb :mypage do
+  link 'マイページ', mypage_path
+  parent :root
+end
+
+crumb :edit_mypage do
+  link '会員情報変更', mypage_edit_path
+  parent :mypage
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
