@@ -28,6 +28,11 @@ crumb :contact do
   parent :root
 end
 
+crumb :reservation do
+  link 'ランチのご予約', reservations_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

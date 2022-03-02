@@ -1,5 +1,7 @@
 <% content_for(:title, "ランチのご予約") %>
 <div class="container">
+  <% breadcrumb :reservation %>
+  <%= breadcrumbs reservation: " &rsaquo; " %>
   <h1 class="text-center my-5">ランチのご予約</h1>
   <div class="row px-2">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
