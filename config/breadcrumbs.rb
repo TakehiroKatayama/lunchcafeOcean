@@ -43,6 +43,11 @@ crumb :login do
   parent :root
 end
 
+crumb :user do
+  link '会員登録', new_user_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
