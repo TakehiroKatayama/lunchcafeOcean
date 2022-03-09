@@ -1,5 +1,5 @@
 crumb :root do
-  link 'Home', root_path
+  link '<i class="fas fa-home"></i> Home'.html_safe, root_path
 end
 
 crumb :news do
