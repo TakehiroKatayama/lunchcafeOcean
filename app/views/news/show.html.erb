@@ -1,6 +1,10 @@
 <% content_for(:title, @news.title) %>
 <% set_meta_tags og: { title: @news.title, type: 'article', image: @news.news_image.url } %>
 <div class="container my-5">
+  <div class="my-4">
+    <% breadcrumb :show_news %>
+    <%= breadcrumbs show_news: " &rsaquo; " %>
+  </div>
   <div class="row">
     <div class="col-lg-8">
       <div class="card bg-white my-4 p-2 shadow">
