@@ -1,7 +1,9 @@
 <% content_for(:title, "マイページ") %>
 <div class="container">
-  <% breadcrumb :mypage %>
-  <%= breadcrumbs mypage: " &rsaquo; " %>
+  <div class="my-4">
+    <% breadcrumb :mypage %>
+    <%= breadcrumbs mypage: " &rsaquo; " %>
+  </div>
   <h1 class="text-center my-5"><i class="fas fa-user"></i>マイページ</h1>
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
