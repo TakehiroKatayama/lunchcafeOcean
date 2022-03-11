@@ -19,6 +19,7 @@
         <div class="body m-5">
           <p><%= @news.body %></p>
         </div>
+        <%= social_share_button_tag(@news.title) %>
       </div>
       <%= render "arrows" %>
     </div>
