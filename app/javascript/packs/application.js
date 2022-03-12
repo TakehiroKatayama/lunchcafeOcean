@@ -6,7 +6,6 @@ require('jquery');
 require('slick.js');
 require('jquery.validate.js');
 require('jquery.validate.form.js');
-require('social-share-button');
 
 import 'src/application';
 import 'bootstrap/dist/js/bootstrap';
