@@ -1,0 +1,151 @@
+.main-visual {
+  background-image: image-url("top.jpg");
+  height: calc(100vh - 76px);
+  position: relative;
+  background-position: center;
+}
+
+.main-visual .top-inner-text {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  color: #f3f9f9;
+}
+
+.main-visual .top-inner-text .main-message {
+  font-size: 5rem;
+  font-family: 'WindSong', cursive;
+}
+
+@media screen and (max-width: 767px) {
+  .main-visual .top-inner-text .main-message {
+    font-size: 3rem;
+  }
+}
+
+.main-visual .top-inner-text .sub-message {
+  font-size: 2rem;
+  font-family: 'Shippori Mincho', sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  .main-visual .top-inner-text .sub-message {
+    font-size: 1.5rem;
+  }
+}
+
+.explain-title {
+  position: relative;
+  padding: 0.25em 0;
+}
+
+.explain-title:after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: -webkit-gradient(linear, left top, right top, from(#40f22b), to(transparent));
+  background: linear-gradient(to right, #40f22b, transparent);
+}
+
+.wrap-terms {
+  border-radius: 15px;
+  margin: 20px 0;
+  background: #f9fcfb;
+  border: 5px solid #e4e0de;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .wrap-terms {
+    font-size: 0.5rem;
+  }
+}
+
+.shop-visual {
+  background-image: image-url("shop.jpg");
+  height: calc(50vh);
+  position: relative;
+  background-position: center;
+}
+
+.shop-visual .top-inner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 100px;
+  color: #f3f9f9;
+}
+
+.shop-visual .top-inner-text .shop-message {
+  font-size: 5rem;
+  font-family: 'WindSong', cursive;
+}
+
+.card-body {
+  background-color: #f9fcfb;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+}
+
+button {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+}
+
+.prev-arrow {
+  left: -40px;
+  width: 0;
+  height: 0;
+  opacity: 0.5;
+}
+
+.next-arrow {
+  right: -40px;
+  width: 0;
+  height: 0;
+  opacity: 0.5;
+}
+
+.fadein {
+  opacity: 0;
+  -webkit-transform: translate(0, 50px);
+          transform: translate(0, 50px);
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+}
+
+.fadein.scrollin {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+/*# sourceMappingURL=static_pages.css.map */
