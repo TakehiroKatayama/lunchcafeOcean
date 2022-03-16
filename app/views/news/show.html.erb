@@ -20,7 +20,7 @@
           <p><%= @news.body %></p>
         </div>
         <div class="text-right mr-5 mb-5">
-          <%= social_share_button_tag(@news.title) %>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"data-lang="ja" data-size="large"></a>
         </div>
       </div>
       <%= render "arrows" %>
@@ -33,3 +33,4 @@
     </div>
   </div>
 </div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
