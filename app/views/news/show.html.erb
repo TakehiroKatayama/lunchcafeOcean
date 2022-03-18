@@ -13,7 +13,7 @@
           <%= l @news.created_at, format: :news %>
           <%= link_to @news.category_i18n, news_index_path(category: @news.category), class:"btn btn-outline-success btn-sm rounded-pill text-nowrap ml-auto" %>
         </div>
-        <div class="mx-5 mb-5">
+        <div class="mx-1 mx-md-3 mx-lg-5 mb-1 mb-md-3 mb-lg-5">
           <%= image_tag @news.news_image.url, class: "card-img-top img-fluid rounded mt-3" %>
         </div>
         <div class="body m-5">
