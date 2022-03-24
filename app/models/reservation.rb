@@ -13,7 +13,7 @@ class Reservation < ApplicationRecord
   validates :reservation_status, presence: true
   validates :capacity_id, presence: true
 
-  validate :date_before_today
+  validate :date_before_today, on: :create
   validate :start_time_not_sunday
   validate :start_time_not_monday
 

@@ -1,5 +1,5 @@
 class Admin::ReservationsController < Admin::BaseController
-  before_action :set_reservation, only: %i[show edit update destroy cancel]
+  before_action :set_reservation, only: %i[show edit update destroy cancel status_update]
   before_action :assign_to_capacity_id, only: %i[create update]
 
   def index
@@ -35,6 +35,15 @@ class Admin::ReservationsController < Admin::BaseController
   rescue StandardError
     flash.now['danger'] = '予約の変更ができませんでした'
     render :edit
+  end
+
+  def status_update
+    if @reservation.update!(reservation_params)
+      redirect_to admin_reservations_path, success: '変更が完了しました'
+    else
+      flash.now['danger'] = '更新に失敗しました'
+      render :show
+    end
   end
 
   def destroy
