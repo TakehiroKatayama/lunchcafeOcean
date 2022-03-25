@@ -18,4 +18,14 @@ class User < ApplicationRecord
   enum role: { general: 0, admin: 1 }
 
   PER_PAGE = 5
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|  # ゲストログイン用
+      user.name = 'ゲスト'
+      user.phonenumber = '00000000000'
+      user.password = 'guest0000'
+      user.password_confirmation = 'guest0000'
+      user.role = 1
+    end
+  end
 end
