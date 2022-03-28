@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :ensure_normal_user, only: :destroy
+  before_action :ensure_normal_user, only: %i[update destroy]
 
   def index
     @q = User.ransack(params[:q])
@@ -36,7 +36,7 @@ class Admin::UsersController < Admin::BaseController
   def ensure_normal_user
     return unless current_user.email == 'guest@example.com'
 
-    redirect_to admin_root_path, danger: 'ゲストユーザーでは削除できません。'
+    redirect_to admin_root_path, danger: 'ゲストユーザーでは編集・削除できません。'
   end
 
   def user_params
