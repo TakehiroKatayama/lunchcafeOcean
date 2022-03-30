@@ -34,7 +34,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def ensure_normal_user
-    return unless current_user.email == 'guest@example.com'
+    return unless current_user.email == User::GUEST_USER
 
     redirect_to admin_root_path, danger: 'ゲストユーザーでは編集・削除できません。'
   end

@@ -31,7 +31,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def ensure_normal_user
-    return unless params[:email] == 'guest@example.com'
+    return unless params[:email] == User::GUEST_USER
 
     redirect_to root_path, danger: 'ゲストユーザーのパスワード再設定はできません。'
   end

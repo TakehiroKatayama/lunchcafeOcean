@@ -28,4 +28,6 @@ class User < ApplicationRecord
       user.role = 1
     end
   end
+
+  GUEST_USER = 'guest@example.com'.freeze # コントローラーで機能制限のためゲストユーザーを定義
 end
