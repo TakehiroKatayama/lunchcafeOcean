@@ -1,6 +1,6 @@
 class Admin::UserSessionsController < Admin::BaseController
   layout 'admin/layouts/admin_login'
-  skip_before_action :check_admin, only: %i[new create]
+  skip_before_action :check_admin, only: %i[new create guest_login]
 
   def new; end
 
@@ -17,5 +17,11 @@ class Admin::UserSessionsController < Admin::BaseController
   def destroy
     logout
     redirect_to admin_login_path, success: 'ログアウトしました'
+  end
+
+  def guest_login
+    guest_user = User.guest
+    auto_login(guest_user)
+    redirect_to admin_root_path, success: 'ゲストユーザーとしてログインしました。'
   end
 end

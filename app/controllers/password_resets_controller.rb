@@ -1,4 +1,6 @@
 class PasswordResetsController < ApplicationController
+  before_action :ensure_normal_user, only: :create
+
   def new; end
 
   def create
@@ -26,5 +28,11 @@ class PasswordResetsController < ApplicationController
       flash.now[:danger] = 'パスワードを変更できませんでした。'
       render :edit
     end
+  end
+
+  def ensure_normal_user
+    return unless params[:email] == User::GUEST_USER
+
+    redirect_to root_path, danger: 'ゲストユーザーのパスワード再設定はできません。'
   end
 end
