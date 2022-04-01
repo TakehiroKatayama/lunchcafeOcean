@@ -9,7 +9,7 @@
         <%= link_to edit_admin_reservation_path(@reservation), class: "btn btn-success" do %>
           <i class="far fa-edit"></i>予約変更
         <% end %>
-        <%= link_to "/admin/reservations/cancel/#{@reservation.id}", method: :patch, data: {confirm: "本当にキャンセルしてもよろしいですか?"}, class: "btn btn-warning" do %>
+        <%= link_to admin_cancel_path(@reservation), method: :patch, data: {confirm: "本当にキャンセルしてもよろしいですか?"}, class: "btn btn-warning" do %>
           <i class="fas fa-ban"></i>キャンセル
         <% end %>
         <%= link_to admin_reservation_path(@reservation), method: :delete, data: { confirm: "２度と戻せません本当に削除してもよろしいですか"}, class: "btn btn-danger" do %>

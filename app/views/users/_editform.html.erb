@@ -1,4 +1,4 @@
-<%= form_with model: @user, url: "/mypage/edit", local: true, id: "user_form" do |f| %>
+<%= form_with model: @user, url: mypage_edit_path, local: true, id: "user_form" do |f| %>
   <table class="table table-bordered bg-white">
     <tr>
       <th scope="row" class="table-active text-center align-middle"><%= f.label :name %></th>
