@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to '/mypage', success: '登録情報を更新しました。'
+      redirect_to mypage_path, success: '登録情報を更新しました。'
     else
       flash.now[:danger] = '登録情報の更新に失敗しました。'
       render :edit
