@@ -12,7 +12,7 @@
   </div>
   <div class="navbar-nav d-block d-lg-none">
     <% if logged_in? %>
-      <%= link_to "/mypage" do %>
+      <%= link_to mypage_path do %>
         <div class="flex-column mx-3 text-center">
           <i class="fas fa-user fa-2x"></i>
           <p class="text-nowrap mb-0">マイページ</p>
@@ -35,7 +35,7 @@
       <li class= "nav-item"><%= link_to "Home", root_path, class: "dropdown-item" %></li>
       <li><%= link_to "お知らせ", news_index_path, class: "dropdown-item" %></li>
       <li><%= link_to "メニュー", menus_path, class: "dropdown-item" %></li>
-      <li><%= link_to "店舗情報", "/shop", class: "dropdown-item" %></li>
+      <li><%= link_to "店舗情報", shop_path, class: "dropdown-item" %></li>
       <li><%= link_to "お問い合わせ", contacts_path, class: "dropdown-item" %></li>
     </ul>
   </div>
@@ -49,7 +49,7 @@
   </div>
   <div class="navbar-nav mr-auto d-none d-lg-block">
     <% if logged_in? %>
-      <%= link_to "/mypage" do %>
+      <%= link_to mypage_path do %>
         <div class="flex-column mx-3 mb-0 text-center">
           <i class="fas fa-user fa-2x"></i>
           <p class="text-nowrap mb-0">マイページ</p>
