@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[show edit update]
+  before_action :ensure_normal_user, only: %i[update]
 
   def new
     @user = User.new
@@ -42,6 +43,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def ensure_normal_user
+    return unless current_user.email == User::GUEST_USER
+
+    redirect_to mypage_path, danger: 'ゲストユーザーは編集できません。'
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :phonenumber, :password, :password_confirmation)
