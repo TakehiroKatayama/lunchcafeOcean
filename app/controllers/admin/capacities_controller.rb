@@ -20,6 +20,15 @@ class Admin::CapacitiesController < Admin::BaseController
     end
   end
 
+  def closed
+    if @capacity.update!(capacity_params, remaining_seat: 0)
+      redirect_to admin_capacities_path, success: '完了しました'
+    else
+      flash.now[:danger] = 'できませんでした'
+      render :index
+    end
+  end
+
   private
 
   def set_capacity
