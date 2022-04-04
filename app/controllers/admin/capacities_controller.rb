@@ -1,5 +1,5 @@
 class Admin::CapacitiesController < Admin::BaseController
-  before_action :set_capacity, only: %i[show edit update]
+  before_action :set_capacity, only: %i[show edit update closed]
 
   def index
     @capacities = Capacity.all
@@ -21,10 +21,10 @@ class Admin::CapacitiesController < Admin::BaseController
   end
 
   def closed
-    if @capacity.update!(capacity_params, remaining_seat: 0)
-      redirect_to admin_capacities_path, success: '完了しました'
+    if @capacity.update!(remaining_seat: 0)
+      redirect_to admin_capacities_path, success: '休業日に設定しました'
     else
-      flash.now[:danger] = 'できませんでした'
+      flash.now[:danger] = '休業日に設定できませんでした'
       render :index
     end
   end
