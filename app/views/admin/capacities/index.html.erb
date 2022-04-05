@@ -18,6 +18,11 @@
               <%= capacity.reservations.count%>件
             <% end%>
           </p>
+          <p class="text-nowrap">
+            <%= link_to admin_closed_path(capacity), method: :patch do%>
+              休業
+            <% end%>
+          </p>
         <% end %>
       <% end %>
     </div>
