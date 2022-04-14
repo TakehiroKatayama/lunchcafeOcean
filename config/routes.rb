@@ -36,10 +36,11 @@ Rails.application.routes.draw do
     resources :menus
     resources :users, only: %i[index show edit update destroy]
     resources :reservations
-    resources :contacts, only: %i[index show update destroy]
     patch '/reservations/cancel/:id', to: 'reservations#cancel', as: :cancel
     patch '/reservations/status/:id', to: 'reservations#status_update', as: :status
+    resources :contacts, only: %i[index show update destroy]
     resources :capacities, only: %i[index show edit update]
+    patch '/capacities/closed/:id', to: 'capacities#closed', as: :closed
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
