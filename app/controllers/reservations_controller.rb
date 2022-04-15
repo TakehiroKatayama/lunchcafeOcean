@@ -20,11 +20,11 @@ class ReservationsController < ApplicationController
   def create
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params)
-      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      @reservation.change_capacity
       ReservationMailer.email(@reservation).deliver_now
       notify_to_slack
-      redirect_to root_path, success: 'ご予約が完了しました。'
     end
+    redirect_to root_path, success: 'ご予約が完了しました。'
   rescue StandardError
     redirect_to reservations_path, danger: 'ご予約ができませんでした。店舗までご連絡下さい。'
   end
