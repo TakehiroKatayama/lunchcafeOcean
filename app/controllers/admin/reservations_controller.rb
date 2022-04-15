@@ -30,8 +30,8 @@ class Admin::ReservationsController < Admin::BaseController
       @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
       @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
-      redirect_to admin_reservations_path, success: '予約の変更が完了しました'
     end
+    redirect_to admin_reservations_path, success: '予約の変更が完了しました'
   rescue StandardError
     flash.now['danger'] = '予約の変更ができませんでした'
     render :edit
@@ -50,16 +50,16 @@ class Admin::ReservationsController < Admin::BaseController
     Reservation.transaction do
       @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.destroy!
-      redirect_to admin_reservations_path, success: '予約をを削除しました'
     end
+    redirect_to admin_reservations_path, success: '予約を削除しました'
   end
 
   def cancel
     Reservation.transaction do
       @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_status: 'cancel')
-      redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
     end
+    redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
   rescue StandardError
     flash.now['danger'] = 'キャンセルできませんでした'
     render :show
