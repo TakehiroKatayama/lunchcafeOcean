@@ -16,7 +16,7 @@ class Admin::ReservationsController < Admin::BaseController
   def create
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id))
-      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      @reservation.change_capacity
     end
     redirect_to admin_reservations_path, success: '予約が完了しました'
   rescue StandardError => e
@@ -29,7 +29,7 @@ class Admin::ReservationsController < Admin::BaseController
     Reservation.transaction do
       @reservation.capacity.update!(remaining_seat: @reservation.increased_capacity)
       @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
-      @reservation.capacity.update!(remaining_seat: @reservation.decreased_capacity)
+      @reservation.change_capacity
     end
     redirect_to admin_reservations_path, success: '予約の変更が完了しました'
   rescue StandardError
