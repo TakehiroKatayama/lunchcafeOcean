@@ -65,5 +65,10 @@ class Reservation < ApplicationRecord
     capacity.update!(remaining_seat: increased_capacity)
   end
 
+  # 予約ステータスをキャンセル済みに変更する
+  def status_cancel
+    update!(reservation_status: 'cancel')
+  end
+
   include Recent
 end

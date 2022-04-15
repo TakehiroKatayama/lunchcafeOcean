@@ -57,7 +57,7 @@ class Admin::ReservationsController < Admin::BaseController
   def cancel
     Reservation.transaction do
       @reservation.return_capacity
-      @reservation.update!(reservation_status: 'cancel')
+      @reservation.status_cancel
     end
     redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
   rescue StandardError
