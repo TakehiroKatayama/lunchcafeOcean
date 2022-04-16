@@ -55,5 +55,20 @@ class Reservation < ApplicationRecord
     capacity.remaining_seat + number_of_people
   end
 
+  # 予約人数分、席数を変更する
+  def change_capacity
+    capacity.update!(remaining_seat: decreased_capacity)
+  end
+
+  # 席数を予約人数分戻す
+  def return_capacity
+    capacity.update!(remaining_seat: increased_capacity)
+  end
+
+  # 予約ステータスをキャンセル済みに変更する
+  def status_cancel
+    update!(reservation_status: 'cancel')
+  end
+
   include Recent
 end
