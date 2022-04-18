@@ -30,6 +30,7 @@ module ApplicationHelper
     }
   end
 
+  # Newsのカテゴリーの値によって出力される名前を変える
   def news_category
     case params[:category]
     when 'event'
