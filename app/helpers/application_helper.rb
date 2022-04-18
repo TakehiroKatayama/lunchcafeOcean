@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   # 予約時の登録のslackへ通知を送る
-  def notify_to_slack
+  def reservation_to_slack
     notifier = Slack::Notifier.new(
       Rails.application.credentials.slack[:notifier],
       channel: '#予約通知',

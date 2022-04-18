@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.create!(reservation_params)
       @reservation.change_capacity
       ReservationMailer.email(@reservation).deliver_now
-      view_context.notify_to_slack
+      view_context.reservation_to_slack
     end
     redirect_to root_path, success: 'ご予約が完了しました。'
   rescue StandardError
