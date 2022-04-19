@@ -17,10 +17,12 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1 }
 
+  # ページネーションのページ数を個別に設定
   PER_PAGE = 5
 
+  # ゲストログイン用アカウント
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|  # ゲストログイン用
+    find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = 'ゲスト'
       user.phonenumber = '00000000000'
       user.password = 'guest0000'
@@ -29,5 +31,6 @@ class User < ApplicationRecord
     end
   end
 
-  GUEST_USER = 'guest@example.com'.freeze # コントローラーで機能制限のためゲストユーザーを定義
+  # コントローラーで機能制限のためゲストユーザーを定義
+  GUEST_USER = 'guest@example.com'.freeze
 end

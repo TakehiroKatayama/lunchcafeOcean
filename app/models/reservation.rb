@@ -13,7 +13,7 @@ class Reservation < ApplicationRecord
   validates :reservation_status, presence: true
   validates :capacity_id, presence: true
 
-  validate :date_before_today, on: :create
+  validate :date_before_today, on: :create # 新規予約登録時のみバリデーションを適用する
   validate :start_time_not_sunday
   validate :start_time_not_monday
 
@@ -33,14 +33,17 @@ class Reservation < ApplicationRecord
     cancel: 2
   }
 
+  # 予約日が今日以前の日付を制限するバリデーション
   def date_before_today
     errors.add(:start_time, 'は過去の日付は選択できません') if capacity.start_time < Time.zone.today
   end
 
+  # 予約日が日曜日を制限するバリデーション
   def start_time_not_sunday
     errors.add(:start_time, 'は定休日(月曜日・日曜日)以外を選択してください') if capacity.start_time.sunday?
   end
 
+  # 予約日が月曜日を制限するバリデーション
   def start_time_not_monday
     errors.add(:start_time, 'は定休日(月曜日・日曜日)以外を選択してください') if capacity.start_time.monday?
   end
@@ -70,5 +73,6 @@ class Reservation < ApplicationRecord
     update!(reservation_status: 'cancel')
   end
 
+  # 作成から一週間以内のものを降順にで取得するscopeを呼び出す
   include Recent
 end

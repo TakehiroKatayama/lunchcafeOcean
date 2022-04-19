@@ -15,8 +15,8 @@ class Admin::ReservationsController < Admin::BaseController
 
   def create
     Reservation.transaction do
-      @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id))
-      @reservation.change_capacity
+      @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id)) # 選択された日付に紐づいたcapacity_idを挿入し予約を作成
+      @reservation.change_capacity                                                            # 予約日に紐づくcapacityから予約人数をマイナスする
     end
     redirect_to admin_reservations_path, success: '予約が完了しました'
   rescue StandardError => e
@@ -27,9 +27,9 @@ class Admin::ReservationsController < Admin::BaseController
 
   def update
     Reservation.transaction do
-      @reservation.return_capacity
-      @reservation.update!(reservation_params.merge(capacity_id: @capacity_id))
-      @reservation.change_capacity
+      @reservation.return_capacity                                              # 変更前の予約日に紐づくcapacityに変更前の予約人数をプラスする(capacityを元に戻す)
+      @reservation.update!(reservation_params.merge(capacity_id: @capacity_id)) # 変更後の選択された日付に紐づいたcapacity_idを挿入し予約を更新
+      @reservation.change_capacity                                              # 変更後の予約日に紐づくcapacityから予約人数をマイナスする
     end
     redirect_to admin_reservations_path, success: '予約の変更が完了しました'
   rescue StandardError
@@ -38,7 +38,7 @@ class Admin::ReservationsController < Admin::BaseController
   end
 
   def status_update
-    if @reservation.update!(reservation_params)
+    if @reservation.update!(reservation_params) # 他テーブルの値を絡めないステータス更新用
       redirect_to admin_reservations_path, success: '変更が完了しました'
     else
       flash.now['danger'] = '更新に失敗しました'
@@ -48,7 +48,7 @@ class Admin::ReservationsController < Admin::BaseController
 
   def destroy
     Reservation.transaction do
-      @reservation.return_capacity
+      @reservation.return_capacity # 予約日に紐づくcapacityに変更前の予約人数をプラスする(capacityを元に戻す)
       @reservation.destroy!
     end
     redirect_to admin_reservations_path, success: '予約を削除しました'
@@ -56,8 +56,8 @@ class Admin::ReservationsController < Admin::BaseController
 
   def cancel
     Reservation.transaction do
-      @reservation.return_capacity
-      @reservation.status_cancel
+      @reservation.return_capacity # 予約日に紐づくcapacityに変更前の予約人数をプラスする(capacityを元に戻す)
+      @reservation.status_cancel   # 予約ステータスをキャンセル済みに変更(予約自体のデータは残す)
     end
     redirect_to admin_reservations_path, success: 'キャンセルが完了しました'
   rescue StandardError
@@ -72,7 +72,7 @@ class Admin::ReservationsController < Admin::BaseController
   end
 
   def assign_to_capacity_id
-    @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id
+    @capacity_id = Capacity.find_by(start_time: params[:reservation][:capacity_id]).id # 選択された日付に紐づくcapacity_idを呼び出す
   end
 
   def reservation_params

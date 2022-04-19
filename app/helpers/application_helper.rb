@@ -1,7 +1,7 @@
 module ApplicationHelper
   def page_title(page_title = '')
     base_title = 'ランチカフェオーシャン'
-    page_title.empty? ? base_title : page_title + ' | ' + base_title
+    page_title.empty? ? base_title : "#{page_title} | #{base_title}"
   end
 
   def default_meta_tags
@@ -30,6 +30,7 @@ module ApplicationHelper
     }
   end
 
+  # Newsのカテゴリーの値によって出力される名前を変える
   def news_category
     case params[:category]
     when 'event'
@@ -43,13 +44,23 @@ module ApplicationHelper
     end
   end
 
-  # 予約時の登録のslackへ通知を送る
-  def notify_to_slack
+  # 予約時登録slackへ通知を送る
+  def reservation_to_slack
     notifier = Slack::Notifier.new(
       Rails.application.credentials.slack[:notifier],
       channel: '#予約通知',
       username: '予約通知くん'
     )
     notifier.ping('新しい予約がありました！')
+  end
+
+  # お問い合わせ登録時slackへ通知を送る
+  def contact_to_slack
+    notifier = Slack::Notifier.new(
+      Rails.application.credentials.slack[:notifier],
+      channel: '#お問い合わせ通知',
+      username: 'お問い合わせ通知くん'
+    )
+    notifier.ping('新しいお問い合わせがありました！')
   end
 end
