@@ -1,2 +1,14 @@
 @import 'admin-lte/dist/css/adminlte.css';
 @import 'trix/dist/trix';
+
+.simple-calendar {
+  .wday-0 {
+    background-color: #feeae9;
+  }
+  .wday-6 {
+    background-color: #eaf4fe;
+  }
+  .today {
+    background-color: #eefceb;
+  }
+}
