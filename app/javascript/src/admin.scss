@@ -13,22 +13,30 @@
   }
 }
 
-.badge {
-  display: inline-block;
-  color: #fff;
-  padding: 0.2rem 0.3rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  text-align: center;
-  white-space: nowrap;
-}
-.vacancy {
-  background-color: #3998db;
-}
-.full {
-  background-color: #e74c3c;
-}
-.closed {
-  background-color: #5cbd9d;
+.badge-text {
+  a {
+    color: #fff;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .status-badge {
+    display: inline-block;
+
+    padding: 0.2rem 0.3rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .vacancy {
+    background-color: #3998db;
+  }
+  .full {
+    background-color: #e74c3c;
+  }
+  .closed {
+    background-color: #5cbd9d;
+  }
 }

@@ -7,7 +7,7 @@
       <%= month_calendar events: @capacities do |date, capacities| %>
         <%= date.day %>
         <% capacities.each do |capacity| %>
-          <div class="text-nowrap">
+          <div class="text-nowrap badge-text">
             <%= link_to edit_admin_capacity_path(capacity) do%>
               <div class="status-badge <%= capacity.capacity_status %>">
                 <%= capacity.capacity_status_i18n %>
