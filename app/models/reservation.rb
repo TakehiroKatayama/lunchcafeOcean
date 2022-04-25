@@ -14,8 +14,7 @@ class Reservation < ApplicationRecord
   validates :capacity_id, presence: true
 
   validate :date_before_today, on: :create # 新規予約登録時のみバリデーションを適用する
-  validate :start_time_not_sunday
-  validate :start_time_not_monday
+  validate :not_reservation_capacity_status
 
   enum visiting_time: {
     '11:00': 0,
@@ -38,14 +37,14 @@ class Reservation < ApplicationRecord
     errors.add(:start_time, 'は過去の日付は選択できません') if capacity.start_time < Time.zone.today
   end
 
-  # 予約日が日曜日を制限するバリデーション
-  def start_time_not_sunday
-    errors.add(:start_time, 'は定休日(月曜日・日曜日)以外を選択してください') if capacity.start_time.sunday?
-  end
-
-  # 予約日が月曜日を制限するバリデーション
-  def start_time_not_monday
-    errors.add(:start_time, 'は定休日(月曜日・日曜日)以外を選択してください') if capacity.start_time.monday?
+  # capacityのステータスによってバリデーションを発生させる。
+  def not_reservation_capacity_status
+    case capacity.capacity_status
+    when 'closed'
+      errors.add(:start_time, 'は休業日です。')
+    when 'full'
+      errors.add(:start_time, 'は予約ができませんでした。一度店舗までご連絡下さい。')
+    end
   end
 
   # 席数から予約人数をマイナスする
