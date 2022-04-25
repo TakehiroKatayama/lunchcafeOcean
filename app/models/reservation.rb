@@ -73,6 +73,11 @@ class Reservation < ApplicationRecord
     update!(reservation_status: 'cancel')
   end
 
+  # 席数が０になった際にステータスを満席に更新する
+  def full?
+    capacity.update!(capacity_status: 'full') if capacity.remaining_seat.zero?
+  end
+
   # 作成から一週間以内のものを降順にで取得するscopeを呼び出す
   include Recent
 end
