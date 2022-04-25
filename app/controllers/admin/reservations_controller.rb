@@ -17,6 +17,7 @@ class Admin::ReservationsController < Admin::BaseController
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params.merge(capacity_id: @capacity_id)) # 選択された日付に紐づいたcapacity_idを挿入し予約を作成
       @reservation.change_capacity                                                            # 予約日に紐づくcapacityから予約人数をマイナスする
+      @reservation.full?                                                                      # 席数が0になった場合にcapacityステータスを満席に変更する。
     end
     redirect_to admin_reservations_path, success: '予約が完了しました'
   rescue StandardError => e
@@ -30,6 +31,7 @@ class Admin::ReservationsController < Admin::BaseController
       @reservation.return_capacity                                              # 変更前の予約日に紐づくcapacityに変更前の予約人数をプラスする(capacityを元に戻す)
       @reservation.update!(reservation_params.merge(capacity_id: @capacity_id)) # 変更後の選択された日付に紐づいたcapacity_idを挿入し予約を更新
       @reservation.change_capacity                                              # 変更後の予約日に紐づくcapacityから予約人数をマイナスする
+      @reservation.full?                                                        # 席数が0になった場合にcapacityステータスを満席に変更する。
     end
     redirect_to admin_reservations_path, success: '予約の変更が完了しました'
   rescue StandardError
