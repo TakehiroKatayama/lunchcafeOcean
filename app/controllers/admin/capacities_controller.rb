@@ -36,6 +36,6 @@ class Admin::CapacitiesController < Admin::BaseController
   end
 
   def capacity_params
-    params.require(:capacity).permit(:remaining_seat)
+    params.require(:capacity).permit(:remaining_seat, :capacity_status)
   end
 end
