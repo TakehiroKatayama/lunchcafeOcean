@@ -13,7 +13,9 @@
                 <%= capacity.capacity_status_i18n %>
               </div>
             <% end %>
-            <%= capacity.remaining_seat%>席
+            <% if capacity.capacity_status == "vacancy" %>
+              <%= capacity.remaining_seat%>席
+            <% end %>
           </div>
           <p class="text-nowrap">予約 :
             <%= link_to admin_capacity_path(capacity) do%>
