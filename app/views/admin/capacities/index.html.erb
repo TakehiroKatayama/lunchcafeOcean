@@ -22,11 +22,6 @@
               <%= capacity.reservations.count%>件
             <% end%>
           </p>
-          <p class="text-nowrap">
-            <%= link_to admin_closed_path(capacity), method: :patch, data: {confirm: "休業日に設定してもよろしいですか?"}, class: "btn btn-success btn-sm" do%>
-              休業日に設定
-            <% end%>
-          </p>
         <% end %>
       <% end %>
     </div>
