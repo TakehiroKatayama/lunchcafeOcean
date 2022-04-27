@@ -7,20 +7,19 @@
       <%= month_calendar events: @capacities do |date, capacities| %>
         <%= date.day %>
         <% capacities.each do |capacity| %>
-          <p class="text-nowrap">
-            席数 : 
+          <div class="text-nowrap badge-text">
             <%= link_to edit_admin_capacity_path(capacity) do%>
+              <div class="status-badge <%= capacity.capacity_status %>">
+                <%= capacity.capacity_status_i18n %>
+              </div>
+            <% end %>
+            <% if capacity.capacity_status == "vacancy" %>
               <%= capacity.remaining_seat%>席
-            <% end%>
-          </p>
+            <% end %>
+          </div>
           <p class="text-nowrap">予約 :
             <%= link_to admin_capacity_path(capacity) do%>
               <%= capacity.reservations.count%>件
-            <% end%>
-          </p>
-          <p class="text-nowrap">
-            <%= link_to admin_closed_path(capacity), method: :patch, data: {confirm: "休業日に設定してもよろしいですか?"}, class: "btn btn-success btn-sm" do%>
-              休業日に設定
             <% end%>
           </p>
         <% end %>

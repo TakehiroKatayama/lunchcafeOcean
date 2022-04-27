@@ -17,6 +17,11 @@ ja:
         visiting: '来店予約'
         visited: '来店済'
         cancel: 'キャンセル'
+    capacity:
+      capacity_status:
+        vacancy: '空席'
+        full: '満席'
+        closed: '休業日'
     contact:
       category:
         takeout: 'ケーキのテイクアウト予約'

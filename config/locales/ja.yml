@@ -28,6 +28,7 @@ ja:
       capacity:
         start_time: 予約日
         remaining_seat: 席数
+        capacity_status: ステータス
       contact:
         name: お名前
         email: メールアドレス

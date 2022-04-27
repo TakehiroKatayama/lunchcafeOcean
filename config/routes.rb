@@ -40,7 +40,6 @@ Rails.application.routes.draw do
     patch '/reservations/status/:id', to: 'reservations#status_update', as: :status
     resources :contacts, only: %i[index show update destroy]
     resources :capacities, only: %i[index show edit update]
-    patch '/capacities/closed/:id', to: 'capacities#closed', as: :closed
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

@@ -1,8 +1,12 @@
 <%= form_with model: @capacity, url: admin_capacity_path(@capacity), local: true do |f| %>
   <%= render '/admin/shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :remaining_seat %> *必須
+ <div class="form-group">
+    <%= f.label :remaining_seat %>
     <%= f.number_field :remaining_seat, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :capacity_status %>
+    <%= f.select :capacity_status, Capacity.capacity_statuses_i18n.invert, {}, {class: "form-control", required: true} %>
   </div>
   <%= f.submit "変更", class: "btn btn-primary" %>
 <% end %>

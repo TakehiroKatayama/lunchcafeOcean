@@ -21,6 +21,7 @@ class ReservationsController < ApplicationController
     Reservation.transaction do
       @reservation = Reservation.create!(reservation_params)
       @reservation.change_capacity                           # 予約日に紐づくcapacityから予約人数をマイナスする
+      @reservation.full?                                     # 席数が0になった場合にcapacityステータスを満席に変更する。
       ReservationMailer.email(@reservation).deliver_now      # 入力されたメールアドレスに確認メールを送信
       view_context.reservation_to_slack                      # 予約の登録をSlackへ通知
     end
