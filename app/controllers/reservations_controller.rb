@@ -8,7 +8,13 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params.merge(capacity_id: capacity_id)) # 選択された日付に紐づいたcapacity_idを挿入し予約を作成
     return unless @reservation.invalid?                                                # バリデーションに引っかかった場合のレンダリング
 
-    flash.now[:danger] = 'ご来店日は日曜日、月曜日以外の日付を選択して下さい。'
+    flash.now[:danger] = "ご選択頂いたご来店日は#{@reservation.capacity.capacity_status_i18n}です。"
+    notifier = Slack::Notifier.new(
+      Rails.application.credentials.slack[:notifier],
+      channel: '#エラー',
+      username: '予約失敗通知くん'
+    )
+    notifier.ping('予約に失敗しました')
     render :index
   end
 
