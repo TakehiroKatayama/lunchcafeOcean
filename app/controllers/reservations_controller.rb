@@ -34,6 +34,12 @@ class ReservationsController < ApplicationController
     redirect_to root_path, success: 'ご予約が完了しました。'
   rescue StandardError
     redirect_to reservations_path, danger: 'ご予約ができませんでした。店舗までご連絡下さい。'
+    notifier = Slack::Notifier.new(
+      Rails.application.credentials.slack[:notifier],
+      channel: '#エラー',
+      username: '予約失敗通知くん'
+    )
+    notifier.ping('人数制限が超えたため予約に失敗しました')
   end
 
   private
