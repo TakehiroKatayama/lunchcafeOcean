@@ -115,6 +115,9 @@ GEM
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     excon (0.91.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -402,6 +405,7 @@ DEPENDENCIES
   capybara
   carrierwave
   enum_help
+  exception_notification
   factory_bot_rails
   fog-aws
   gretel
