@@ -9,12 +9,7 @@ class ReservationsController < ApplicationController
     return unless @reservation.invalid?                                                # バリデーションに引っかかった場合のレンダリング
 
     flash.now[:danger] = "ご選択頂いたご来店日は#{@reservation.capacity.capacity_status_i18n}です。"
-    notifier = Slack::Notifier.new(
-      Rails.application.credentials.slack[:notifier],
-      channel: '#エラー',
-      username: '予約失敗通知くん'
-    )
-    notifier.ping('予約に失敗しました')
+    view_context.reservation_error_to_slack
     render :index
   end
 
@@ -34,12 +29,7 @@ class ReservationsController < ApplicationController
     redirect_to root_path, success: 'ご予約が完了しました。'
   rescue StandardError
     redirect_to reservations_path, danger: 'ご予約ができませんでした。店舗までご連絡下さい。'
-    notifier = Slack::Notifier.new(
-      Rails.application.credentials.slack[:notifier],
-      channel: '#エラー',
-      username: '予約失敗通知くん'
-    )
-    notifier.ping('人数制限が超えたため予約に失敗しました')
+    view_context.reservation_error_to_slack
   end
 
   private

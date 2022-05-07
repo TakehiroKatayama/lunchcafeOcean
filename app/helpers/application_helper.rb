@@ -63,4 +63,14 @@ module ApplicationHelper
     )
     notifier.ping('新しいお問い合わせがありました！')
   end
+
+  # 予約失敗時にSlackに通知を送る
+  def reservation_error_to_slack
+    notifier = Slack::Notifier.new(
+      Rails.application.credentials.slack[:notifier],
+      channel: '#エラー',
+      username: '予約失敗通知くん'
+    )
+    notifier.ping('予約に失敗しました')
+  end
 end
