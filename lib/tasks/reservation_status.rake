@@ -1,6 +1,6 @@
 namespace :reservation_status do
-  desc '本日の予約のステータス「来店予約」をステータスを「来店済み」に変更する'
+  desc '今日の予約のステータス「来店予約」を「来店済み」に更新する'
   task update_reservation_status: :environment do
-    Reservation.where(reservation_status: 'visiting', capacity_id: Capacity.today_id).status_visitesd
+    Reservation.today_reservation.status_visitesd
   end
 end
