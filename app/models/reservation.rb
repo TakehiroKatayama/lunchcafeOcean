@@ -82,6 +82,12 @@ class Reservation < ApplicationRecord
     capacity.update!(capacity_status: 'vacancy') if capacity.remaining_seat != 0
   end
 
+  # 予約ステータスを来店済みに更新
+  scope :status_visitesd, -> { update(reservation_status: 'visited') }
+
+  # 今日の予約かつステータスが来店予約のデータを取得する
+  scope :today_reservation, -> { where(reservation_status: 'visiting', capacity_id: Capacity.today_id) }
+
   # 作成から一週間以内のものを降順にで取得するscopeを呼び出す
   include Recent
 end

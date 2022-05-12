@@ -17,4 +17,7 @@ class Capacity < ApplicationRecord
       update!(capacity_status: 'vacancy')
     end
   end
+
+  # 予約テーブルに紐づく今日の日付のIDを呼び出す
+  scope :today_id, -> { find_by(start_time: Time.zone.today).id }
 end
