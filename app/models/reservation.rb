@@ -85,7 +85,7 @@ class Reservation < ApplicationRecord
   # 予約ステータスを来店済みに更新
   scope :status_visitesd, -> { update(reservation_status: 'visited') }
 
-  # 予約ステータスが来店済みに更新
+  # 今日の予約かつステータスが来店予約のデータを取得する
   scope :today_reservation, -> { where(reservation_status: 'visiting', capacity_id: Capacity.today_id) }
 
   # 作成から一週間以内のものを降順にで取得するscopeを呼び出す
