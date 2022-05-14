@@ -2,7 +2,7 @@
 <img width="1425" alt="Home画面" src="https://user-images.githubusercontent.com/80527303/152959878-d231594a-7a3f-412c-9ec4-af6f2f0f6821.png">
 
 ## URL
-https://lunchcafeocean.com
+https://www.lunchcafeocean.com
 
 ## サービス概要
 実際の飲食店で使っている予約サイト　兼　予約管理システム　(のクローンアプリ)
@@ -68,6 +68,12 @@ https://lunchcafeocean.com
 - gem 'gretel'
 - gem 'slack-notifier'
 - gem 'exception_notification'
+
+## その他ライブラリなど
+- Admin LTE
+- Toastr
+- Slick
+- JqueryValidation
 
 ## ER図
 <img width="414" alt="ER図" src="https://user-images.githubusercontent.com/80527303/152961835-27f56788-1886-48d6-a1ad-ba44cdd58ce0.png">
