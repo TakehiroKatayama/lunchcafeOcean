@@ -60,9 +60,11 @@ https://lunchcafeocean.com
 - gem 'simple_calendar'
 - gem 'carrierwave'
 - gem 'ransack'
-- gem 'pagy'
+- gem 'kaminari'
 - gem 'meta-tags'
+- gem 'gretel'
 - gem 'slack-notifier'
+- gem 'exception_notification'
 
 ## ER図
 <img width="414" alt="ER図" src="https://user-images.githubusercontent.com/80527303/152961835-27f56788-1886-48d6-a1ad-ba44cdd58ce0.png">
