@@ -1,8 +1,6 @@
 <div class="col-6 col-md-3">
   <div class="card border-0 bg-transparent">
-    <%= link_to menu.menu_image.url, "data-lightbox": menu.menu_image.url do %>
-      <%= image_tag menu.menu_image.url, class: "card-img-top img-fluid rounded" %>
-    <% end %>
+    <%= image_tag menu.menu_image.url, class: "card-img-top img-fluid rounded" %>
     <div class="menu-body">
       <h5 class="menu-title card-title text-center"><%=simple_format menu.name%></h5>
       <div class="menu-explain card-text"><%=simple_format menu.content%></div>
