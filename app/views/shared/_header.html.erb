@@ -6,7 +6,7 @@
     <%= link_to reservations_path do %>
       <div class="flex-column text-center">
         <i class="fas fa-calendar-check fa-2x"></i>
-        <p class="text-nowrap mb-0">Web予約</p>
+        <p class="text-nowrap mb-0 small">Web予約</p>
       </div>
     <% end %>
   </div>
@@ -15,14 +15,14 @@
       <%= link_to mypage_path do %>
         <div class="flex-column mx-3 text-center">
           <i class="fas fa-user fa-2x"></i>
-          <p class="text-nowrap mb-0">マイページ</p>
+          <p class="text-nowrap mb-0 small">マイページ</p>
         </div>
       <% end %>
     <%else%>
       <%= link_to admin_guest_login_path, method: :post do %>
         <div class="flex-column mx-3 text-center">
           <i class="fas fa-sign-in-alt fa-2x"></i>
-          <p class="text-nowrap mb-0">ゲストログイン</p>
+          <p class="text-nowrap mb-0 small">管理画面へ</p>
         </div>
       <% end %>
     <% end %>
