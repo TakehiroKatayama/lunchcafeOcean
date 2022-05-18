@@ -4,7 +4,7 @@ class Admin::ReservationsController < Admin::BaseController
 
   def index
     @q = Reservation.ransack(params[:q])
-    @reservations = @q.result.order(capacity_id: 'desc').page(params[:page])
+    @reservations = @q.result.includes(:capacity).capacity_desc.page(params[:page])
   end
 
   def show; end
