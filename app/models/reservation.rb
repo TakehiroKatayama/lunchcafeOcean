@@ -100,6 +100,12 @@ class Reservation < ApplicationRecord
   # capacityを降順
   scope :capacity_desc, -> { search_capacity.date_desc }
 
+  # 今日の予約かつステータスが来店予約のデータを取得する
+  scope :today_reservation, -> { where(reservation_status: 'visiting', capacity_id: Capacity.today_id) }
+
+  # 今日の予約かつステータスが来店予約のデータの件数を習得する
+  scope :count_today_reservation, -> { today_reservation.count }
+
   # 作成から一週間以内のものを降順にで取得するscopeを呼び出す
   include Recent
 end

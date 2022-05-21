@@ -2,6 +2,17 @@
   <div class="mb-3 text-center">
     <h1>管理画面</h1>
   </div>
+  <div class="my-5">
+    <% if Reservation.count_today_reservation.positive? %>
+      <h3>本日の予約 : 
+        <%= link_to "/admin/capacities/#{Capacity.today_id}" do%>
+          <%= Reservation.count_today_reservation %>件
+        <% end %>
+      </h3>
+    <% else %>
+      <h3>本日の予約はありません</h3>
+    <% end %>
+  </div>
   <div class="my-3">
     <h3>新着予約</h3>
   </div>
