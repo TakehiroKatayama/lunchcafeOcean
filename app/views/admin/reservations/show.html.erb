@@ -57,6 +57,10 @@
             <td>ゲスト</td>
           <% end %>
         </tr>
+        <tr>
+          <th scope="row" class="text-nowrap">予約方法</th>
+          <td><%= @reservation.reservation_media_i18n %></td>
+        </tr>
       </table>
       <div class="text-center mb-3">
         <%= link_to "一覧へ", admin_reservations_path, class: "btn btn-secondary" %>
