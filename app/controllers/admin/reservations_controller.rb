@@ -81,6 +81,6 @@ class Admin::ReservationsController < Admin::BaseController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :capacity_id, :user_id)
+    params.require(:reservation).permit(:name, :email, :phonenumber, :number_of_people, :visiting_time, :reservation_status, :capacity_id, :user_id, :reservation_media)
   end
 end
