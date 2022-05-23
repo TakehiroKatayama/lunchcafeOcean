@@ -25,6 +25,8 @@ ja:
         start_time: ご来店日
         capacity_id: 日付ID
         user_id: ユーザーID
+        reservation_media: 予約方法
+        remarks: 備考
       capacity:
         start_time: 予約日
         remaining_seat: 席数
