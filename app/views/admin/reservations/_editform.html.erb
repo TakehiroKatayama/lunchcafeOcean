@@ -28,5 +28,13 @@
     <%= f.label :reservation_status %>
     <%= f.select :reservation_status, Reservation.reservation_statuses_i18n.invert, {}, {class: "form-control", required: true} %>
   </div>
+  <div class="form-group">
+    <%= f.label :reservation_media %> *必須
+    <%= f.select :reservation_media, Reservation.reservation_media_i18n.invert, {}, {class: 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :remarks %>
+    <%= f.text_area :remarks, class: "form-control", rows: "3"%>
+  </div>
   <%= f.submit "変更", class: "btn btn-primary" %>
 <% end %>

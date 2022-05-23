@@ -32,6 +32,13 @@ class Reservation < ApplicationRecord
     cancel: 2
   }
 
+  enum reservation_media: {
+    web: 0,
+    phone: 1,
+    sns: 2,
+    others: 3
+  }
+
   # 予約日が今日以前の日付を制限するバリデーション
   def date_before_today
     errors.add(:start_time, 'は過去の日付は選択できません') if capacity.start_time < Time.zone.today
